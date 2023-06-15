@@ -7,8 +7,8 @@ website:
   navbar:
     # background: "gray"
     right:
-      - text: Blog
-        href: blog.qmd
+      - text: About
+        href: about.qmd
       - text: YPHWS Homepage
         href: https://www.hertshealthevidence.org/yphws/yphws.aspx
         # target: "_blank" # option won't be enabled until quarto 1.3
