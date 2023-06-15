@@ -29,4 +29,4 @@ Some of the initial questions we aim to tackle include, but are not limited to:
 
 </p>
 
-[**2022-10-24 - Are young people who take drugs more likely to have mental health conditions?**](posts/2022-10-24-are_yp_who_take_drugs_more_likely_to_have_mh_conditions/index.qmd)
+[**2023-06-15 - Do YP in care have different aspirations for their future?**](posts/2023-06-08-do_yp_in_care_have_different_aspirations_for_their_future/index.qmd)
