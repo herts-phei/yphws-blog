@@ -15,7 +15,7 @@ Some of the initial questions we aim to tackle include, but are not limited to:
 -   Do young people in care have less healthy diets than those not in care?
 -   Do young people in care have worse awareness of MH services than those not in care?
 -   Do LGBTQ+ YP have different aspirations for their future?
--   Do YP in care have different aspirations for their future?
+-   Do YP in care have different aspirations for their future? ✔
 -   Do LGBTQ+ YP feel different about sustainability?
 -   Do LGBTQ+ YP have different experiences in relation to safety and crime?
 -   Are YP who take drugs more likely to have MH conditions?

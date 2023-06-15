@@ -1,6 +1,7 @@
 ---
 title: "Do YP in care have different aspirations for their future?"
-author: "PHEI Evidence and Intelligence"
+date: '2023-06-15'
+categories: ['care', 'aspirations', 'school leavers']
 format: html
 editor: visual
 ---
