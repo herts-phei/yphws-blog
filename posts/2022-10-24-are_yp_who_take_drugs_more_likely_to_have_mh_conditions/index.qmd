@@ -1,0 +1,13 @@
+---
+title: 'Are young people who take drugs more likely to have mental health conditions?'
+date: '2022-10-24'
+categories: ['drugs', 'mental health']
+description: 'This analysis explores the link between drug use in young people and association with mental health conditions.'
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+![](1000_F_130451383_L1WvClHWWr4PggIzLirbewp4QdilKepW.jpg){width="363"}
