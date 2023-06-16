@@ -273,7 +273,7 @@ print(kable(p_value_table("other")))
 Have other plans after leaving school
 :::
 
-Here, we identify that the students being looked after status has a very statistically significant affect with continuing education, and no significance with any other pathway after leaving school.
+Here, we identify that the students being looked after status has a very statistically significant effect with continuing education, and no significance with any other pathway after leaving school.
 
 Despite only having one pathway with statistical significance, this is noteworthy in that it can provide carers, teachers, and others involved in the health and wellbeing of care-experienced CYPs an avenue in monitoring potential shortcomings of a care-experienced CYP's potential. Further educational pursuits after school are highly associated with better health outcomes, lower deprivation, and higher earnings potential in adulthood. Reducing these inequities to access to higher education or other further educational pursuits is a key element to public health policy.
 
