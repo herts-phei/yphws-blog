@@ -220,7 +220,7 @@ print(kable(p_value_table("family")))
 
 : Results {#tbl-third}
 
-\[Plan to start a family after leaving school\]
+Plan to start a family after leaving school
 :::
 
 ::: {#tbl-panel-5 layout-ncol="3"}
@@ -270,7 +270,7 @@ print(kable(p_value_table("other")))
 
 : Results {#tbl-third}
 
-\[Have other plans after leaving school\]
+Have other plans after leaving school
 :::
 
 Here, we identify that the students being looked after status has a very statistically significant affect with continuing education, and no significance with any other pathway after leaving school.
