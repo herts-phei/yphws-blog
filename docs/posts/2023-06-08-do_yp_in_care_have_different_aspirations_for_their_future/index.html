@@ -140,8 +140,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chi-squared-test" id="toc-chi-squared-test" class="nav-link active" data-scroll-target="#chi-squared-test">Chi-squared Test</a></li>
-  <li><a href="#chi-squared-test-results" id="toc-chi-squared-test-results" class="nav-link" data-scroll-target="#chi-squared-test-results">Chi-squared Test Results</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul>
 </nav>
     </div>
@@ -158,10 +158,10 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="abstract">Abstract</h4>
 <p>Young people in foster or residential care (care-experienced children and young people (CYP)) face different lived experiences than those from non-care homes. This could influence their decision-making around aspirations after leaving school, such as their career, education, or training. This brief analysis seeks to ascertain whether a student’s care status has a relationship with their aspirations after school.</p>
 <p>In the data collected for the latest YPHWS cohort, there were 255 students out of a total of 11151 students who are care-experienced CYPs, representing 2.3% of the total student population.</p>
-<p>Here, we identify that the students being looked after status has a statistically significant relationship with having other plans after leaving school and with starting a family (a p-value of less than 0.05), very statistically significant (a p-value of less than 0.01) with continuing education, and no significance with undertaking further skilled training, pursuing a job or with being uncertain about what to do after leaving school.</p>
+<p>Here, we identify that the students being looked after status has a very statistically significant relationship with continuing education, but with no statistical significance with any of the other pathways after school.</p>
 </section>
-<section id="chi-squared-test" class="level2">
-<h2 class="anchored" data-anchor-id="chi-squared-test">Chi-squared Test</h2>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
 <p>One of the questions coded in the YPHWS survey is <strong><em>what do you plan to do as a next step after leaving school?</em></strong> This is a multi-factorial answer, where students can respond either <em>yes, no, or maybe</em> to several options:</p>
 <ul>
 <li><p>Education</p></li>
@@ -171,7 +171,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Uncertain</p></li>
 <li><p>Other</p></li>
 </ul>
-<p>We can put these results in a contingency table, which tallies the responses into a table like:</p>
+<p>We performed a chi-squared test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.</p>
+<details>
+<br>
+<summary>
+More on chi-squared tests
+</summary>
+<p>We can put the results of students answering the question in YPHWS in a contingency table, which tallies the responses into a table like:</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -203,23 +209,20 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>With contingency tables, we can perform chi-square tests, which examines whether the categories of the rows and columns of a contingency table are statistically significantly associated.</p>
-<p>We performed this test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.</p>
-<details>
-<summary>
-More on the Methodology
-</summary>
-<p>The chi-squared test compares the observed frequencies from the data with expected frequencies if there were no relationship between the variables.</p>
-<p>With chi-squared tests, we need sufficient size in each of the cells inside the table. While the number of students not in care vastly outnumber the number of students who answered prefer not to say&nbsp;or no, there are still sufficient numbers to perform the test (&gt;5) in each of the responses.</p>
+<p>The chi-squared test compares the observed frequencies from the data with expected frequencies if there were null or no relationship between the variables.</p>
+<p>With chi-squared tests, we need sufficient size in each of the cells inside the table. While the number of students not care-experienced outnumber the number of students who answered prefer not to say&nbsp;or yes, there are still sufficient numbers to perform the test (&gt;5) in each of the responses.</p>
+<p>After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: …</p>
+<p>Students answering <em>prefer not to say</em> were omitted from the test.</p>
 </details>
 <div class="cell">
 
 </div>
 </section>
-<section id="chi-squared-test-results" class="level2">
-<h2 class="anchored" data-anchor-id="chi-squared-test-results">Chi-squared Test Results</h2>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
 <div id="tbl-panel-1" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;1: <span style="color:darkblue;">Plan to continue in education after leaving school</span></p>
+<p>Table&nbsp;1: <span style="color:red;">Plan to continue in education after leaving school</span></p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
@@ -227,7 +230,7 @@ More on the Methodology
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
+<th style="text-align: left;">care-experienced</th>
 <th style="text-align: right;">Maybe</th>
 <th style="text-align: right;">No</th>
 <th style="text-align: right;">Yes</th>
@@ -241,12 +244,6 @@ More on the Methodology
 <td style="text-align: right;">33000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">255</td>
-<td style="text-align: right;">145</td>
-<td style="text-align: right;">435</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">260</td>
 <td style="text-align: right;">195</td>
@@ -257,33 +254,27 @@ More on the Methodology
 </div>
 <div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
-<caption>(b) Proportions</caption>
+<caption>(b) Percentages</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">care-experienced</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">0.25</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">0.69</td>
+<td style="text-align: left;">25.2%</td>
+<td style="text-align: left;">6%</td>
+<td style="text-align: left;">68.8%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">0.31</td>
-<td style="text-align: right;">0.17</td>
-<td style="text-align: right;">0.52</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">0.24</td>
-<td style="text-align: right;">0.18</td>
-<td style="text-align: right;">0.58</td>
+<td style="text-align: left;">24%</td>
+<td style="text-align: left;">18%</td>
+<td style="text-align: left;">58.1%</td>
 </tr>
 </tbody>
 </table>
@@ -294,7 +285,7 @@ More on the Methodology
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
-<th style="text-align: left;">Statistically Significant</th>
+<th style="text-align: left;">Significance</th>
 </tr>
 </thead>
 <tbody>
@@ -317,7 +308,7 @@ More on the Methodology
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
+<th style="text-align: left;">care-experienced</th>
 <th style="text-align: right;">Maybe</th>
 <th style="text-align: right;">No</th>
 <th style="text-align: right;">Yes</th>
@@ -331,12 +322,6 @@ More on the Methodology
 <td style="text-align: right;">29000</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">225</td>
-<td style="text-align: right;">105</td>
-<td style="text-align: right;">540</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">355</td>
 <td style="text-align: right;">120</td>
@@ -347,33 +332,27 @@ More on the Methodology
 </div>
 <div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
-<caption>(b) Proportions</caption>
+<caption>(b) Percentages</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">care-experienced</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">0.30</td>
-<td style="text-align: right;">0.08</td>
-<td style="text-align: right;">0.62</td>
+<td style="text-align: left;">29.7%</td>
+<td style="text-align: left;">8.3%</td>
+<td style="text-align: left;">62.1%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">0.12</td>
-<td style="text-align: right;">0.62</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">0.56</td>
+<td style="text-align: left;">33.2%</td>
+<td style="text-align: left;">11.2%</td>
+<td style="text-align: left;">55.6%</td>
 </tr>
 </tbody>
 </table>
@@ -384,12 +363,12 @@ More on the Methodology
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
-<th style="text-align: left;">Statistically Significant</th>
+<th style="text-align: left;">Significance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.1</td>
 <td style="text-align: left;">not statistically significant</td>
 </tr>
 </tbody>
@@ -407,7 +386,7 @@ More on the Methodology
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
+<th style="text-align: left;">care-experienced</th>
 <th style="text-align: right;">Maybe</th>
 <th style="text-align: right;">No</th>
 <th style="text-align: right;">Yes</th>
@@ -421,12 +400,6 @@ More on the Methodology
 <td style="text-align: right;">15085</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">305</td>
-<td style="text-align: right;">195</td>
-<td style="text-align: right;">350</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">430</td>
 <td style="text-align: right;">295</td>
@@ -437,33 +410,27 @@ More on the Methodology
 </div>
 <div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
-<caption>(b) Proportions</caption>
+<caption>(b) Percentages</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">care-experienced</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">0.43</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: right;">0.33</td>
+<td style="text-align: left;">43.4%</td>
+<td style="text-align: left;">23.2%</td>
+<td style="text-align: left;">33.4%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">0.36</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: right;">0.41</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">0.41</td>
-<td style="text-align: right;">0.28</td>
-<td style="text-align: right;">0.31</td>
+<td style="text-align: left;">40.8%</td>
+<td style="text-align: left;">28%</td>
+<td style="text-align: left;">31.3%</td>
 </tr>
 </tbody>
 </table>
@@ -474,12 +441,12 @@ More on the Methodology
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
-<th style="text-align: left;">Statistically Significant</th>
+<th style="text-align: left;">Significance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">0.3</td>
 <td style="text-align: left;">not statistically significant</td>
 </tr>
 </tbody>
@@ -489,7 +456,7 @@ More on the Methodology
 </div>
 <div id="tbl-panel-4" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;4: <span style="color:red;">Plan to start a family after leaving school</span></p>
+<p>Table&nbsp;4: [Plan to start a family after leaving school]</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-4" style="flex-basis: 33.3%;justify-content: center;">
@@ -497,7 +464,7 @@ More on the Methodology
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
+<th style="text-align: left;">care-experienced</th>
 <th style="text-align: right;">Maybe</th>
 <th style="text-align: right;">No</th>
 <th style="text-align: right;">Yes</th>
@@ -511,12 +478,6 @@ More on the Methodology
 <td style="text-align: right;">8385</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">325</td>
-<td style="text-align: right;">240</td>
-<td style="text-align: right;">225</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">330</td>
 <td style="text-align: right;">445</td>
@@ -527,33 +488,27 @@ More on the Methodology
 </div>
 <div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-4" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
-<caption>(b) Proportions</caption>
+<caption>(b) Percentages</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">care-experienced</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">0.37</td>
-<td style="text-align: right;">0.44</td>
-<td style="text-align: right;">0.20</td>
+<td style="text-align: left;">36.6%</td>
+<td style="text-align: left;">43.5%</td>
+<td style="text-align: left;">19.9%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">0.41</td>
-<td style="text-align: right;">0.30</td>
-<td style="text-align: right;">0.28</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: right;">0.44</td>
-<td style="text-align: right;">0.23</td>
+<td style="text-align: left;">32.7%</td>
+<td style="text-align: left;">44.1%</td>
+<td style="text-align: left;">23.3%</td>
 </tr>
 </tbody>
 </table>
@@ -564,13 +519,13 @@ More on the Methodology
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
-<th style="text-align: left;">Statistically Significant</th>
+<th style="text-align: left;">Significance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.005</td>
-<td style="text-align: left;">very statistically significant</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: left;">not statistically significant</td>
 </tr>
 </tbody>
 </table>
@@ -587,7 +542,7 @@ More on the Methodology
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
+<th style="text-align: left;">care-experienced</th>
 <th style="text-align: right;">Maybe</th>
 <th style="text-align: right;">No</th>
 <th style="text-align: right;">Yes</th>
@@ -601,12 +556,6 @@ More on the Methodology
 <td style="text-align: right;">13215</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">205</td>
-<td style="text-align: right;">340</td>
-<td style="text-align: right;">250</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">255</td>
 <td style="text-align: right;">470</td>
@@ -617,33 +566,27 @@ More on the Methodology
 </div>
 <div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
-<caption>(b) Proportions</caption>
+<caption>(b) Percentages</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">care-experienced</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">0.27</td>
-<td style="text-align: right;">0.42</td>
-<td style="text-align: right;">0.31</td>
+<td style="text-align: left;">27.5%</td>
+<td style="text-align: left;">42%</td>
+<td style="text-align: left;">30.5%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">0.43</td>
-<td style="text-align: right;">0.31</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">0.25</td>
-<td style="text-align: right;">0.47</td>
-<td style="text-align: right;">0.28</td>
+<td style="text-align: left;">25.2%</td>
+<td style="text-align: left;">46.5%</td>
+<td style="text-align: left;">28.2%</td>
 </tr>
 </tbody>
 </table>
@@ -654,12 +597,12 @@ More on the Methodology
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
-<th style="text-align: left;">Statistically Significant</th>
+<th style="text-align: left;">Significance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">0.4</td>
 <td style="text-align: left;">not statistically significant</td>
 </tr>
 </tbody>
@@ -669,7 +612,7 @@ More on the Methodology
 </div>
 <div id="tbl-panel-6" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;6: <span style="color:red;">Have other plans after leaving school</span></p>
+<p>Table&nbsp;6: [Have other plans after leaving school]</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
@@ -677,7 +620,7 @@ More on the Methodology
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
+<th style="text-align: left;">care-experienced</th>
 <th style="text-align: right;">Maybe</th>
 <th style="text-align: right;">No</th>
 <th style="text-align: right;">Yes</th>
@@ -691,12 +634,6 @@ More on the Methodology
 <td style="text-align: right;">8385</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">325</td>
-<td style="text-align: right;">240</td>
-<td style="text-align: right;">225</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">330</td>
 <td style="text-align: right;">445</td>
@@ -707,33 +644,27 @@ More on the Methodology
 </div>
 <div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
-<caption>(b) Proportions</caption>
+<caption>(b) Percentages</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">care-experienced</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">0.37</td>
-<td style="text-align: right;">0.44</td>
-<td style="text-align: right;">0.20</td>
+<td style="text-align: left;">36.6%</td>
+<td style="text-align: left;">43.5%</td>
+<td style="text-align: left;">19.9%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Prefer not to say</td>
-<td style="text-align: right;">0.41</td>
-<td style="text-align: right;">0.30</td>
-<td style="text-align: right;">0.28</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: right;">0.44</td>
-<td style="text-align: right;">0.23</td>
+<td style="text-align: left;">32.7%</td>
+<td style="text-align: left;">44.1%</td>
+<td style="text-align: left;">23.3%</td>
 </tr>
 </tbody>
 </table>
@@ -744,20 +675,26 @@ More on the Methodology
 <thead>
 <tr class="header">
 <th style="text-align: right;">p-value</th>
-<th style="text-align: left;">Statistically Significant</th>
+<th style="text-align: left;">Significance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.005</td>
-<td style="text-align: left;">very statistically significant</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: left;">not statistically significant</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p>Below shows the chi-square tests applied to the contingency tables collated together:</p>
+<p>Here, we identify that the students being looked after status has a very statistically significant affect with continuing education, and no significance with any other pathway after leaving school.</p>
+<p>Despite only having one pathway with statistical significance, this is noteworthy in that it can provide carers, teachers, and others involved in the health and wellbeing of care-experienced CYPs an avenue in monitoring potential shortcomings of a care-experienced CYP’s potential. Further educational pursuits after school are highly associated with better health outcomes, lower deprivation, and higher earnings potential in adulthood. Reducing these inequities to access to higher education or other further educational pursuits is a key element to public health policy.</p>
+<details>
+<summary>
+More on the results
+</summary>
+<p><br> Below shows the chi-square tests applied to the contingency tables collated together:</p>
 <div class="cell-output-display">
 <table class="table">
 <thead>
@@ -770,39 +707,40 @@ More on the Methodology
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">education</td>
-<td style="text-align: right;">89.51</td>
+<td style="text-align: right;">51.56</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">job</td>
-<td style="text-align: right;">8.17</td>
-<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">4.46</td>
+<td style="text-align: right;">0.11</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">training</td>
-<td style="text-align: right;">7.86</td>
-<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">2.62</td>
+<td style="text-align: right;">0.27</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">family</td>
-<td style="text-align: right;">14.74</td>
-<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">2.01</td>
+<td style="text-align: right;">0.37</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">unsure</td>
-<td style="text-align: right;">1.92</td>
-<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">1.69</td>
+<td style="text-align: right;">0.43</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">other</td>
-<td style="text-align: right;">14.74</td>
-<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">2.01</td>
+<td style="text-align: right;">0.37</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student’s status of being looked after and the specific prospect response. Here, we identify that the students being looked after status has a statistically significant relationship with having other plans after leaving school, and with starting a family, very statistically significant with continuing education, and no significance with undertaking further skilled training, pursuing a job or with being uncertain about what to do after leaving school.</p>
+<p>A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student’s status of being looked after and the specific prospect response.</p>
 <p>A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on <em>how</em> or <em>why</em> the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.</p>
+</details>
 
 
 </section>

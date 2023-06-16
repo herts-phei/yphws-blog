@@ -1,0 +1,50 @@
+---
+title: "Do LGBTQ+ YP have different aspirations for their future?"
+date: '2023-06-16'
+categories: ['lgbtq+', 'aspirations', 'school leavers']
+format: html
+editor: visual
+---
+  
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(dplyr)
+library(purrr)
+library(tidyverse)
+library(knitr)
+library(simplermarkdown)
+
+box::use(../../../phei_functions/hes)
+
+suppress_everything <- function(df) {
+  
+  df %>% mutate(across(where(is.numeric), ~ if_else(.x <= 7 & .x != 0, NA, .x) %>% `/`(5) %>% round() %>% `*`(5)))
+  
+}
+
+```
+
+```{r}
+yphws_data_private <- readRDS("~/projects/yphws_analysis/data/private/yphws_data_private.Rds")
+
+count <- yphws_data_private$sexuality %>% table() %>% as_tibble() %>% rename("answer" = ".", "number" = "n")
+
+count <- suppress_everything(count)
+
+total_students <- nrow(yphws_data_private)
+
+count <- count %>% mutate("%" = round((number/total_students)*100, 1))
+```
+
+#### Abstract
+
+Young LGBTQ+ students face different lived experiences than those from non-care homes. This could influence their decision-making around aspirations after leaving school, such as their career, education, or training. This brief analysis seeks to ascertain whether a student's sexual orientation has a relationship with their aspirations after school.
+
+```{r}
+#| output: asis
+print(kable(count))
+```
+
+: Summary count of students on question asking about sexual orientation in YPHWS {#tbl-summary-count}
+

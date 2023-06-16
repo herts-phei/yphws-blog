@@ -41,9 +41,9 @@ Young people in foster or residential care (care-experienced children and young 
 
 In the data collected for the latest YPHWS cohort, there were `r round(care_students/5)*5` students out of a total of `r total_students` students who are care-experienced CYPs, representing `r care_students_pct`% of the total student population.
 
-Here, we identify that the students being looked after status has a statistically significant relationship with having other plans after leaving school and with starting a family (a p-value of less than 0.05), very statistically significant (a p-value of less than 0.01) with continuing education, and no significance with undertaking further skilled training, pursuing a job or with being uncertain about what to do after leaving school.
+Here, we identify that the students being looked after status has a very statistically significant relationship with continuing education, but with no statistical significance with any of the other pathways after school.
 
-## Chi-squared Test
+## Methods
 
 One of the questions coded in the YPHWS survey is ***what do you plan to do as a next step after leaving school?*** This is a multi-factorial answer, where students can respond either *yes, no, or maybe* to several options:
 
@@ -59,7 +59,13 @@ One of the questions coded in the YPHWS survey is ***what do you plan to do as a
 
 -   Other
 
-We can put these results in a contingency table, which tallies the responses into a table like:
+We performed a chi-squared test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.
+
+<details>
+<br> 
+<summary>More on chi-squared tests</summary>
+
+We can put the results of students answering the question in YPHWS in a contingency table, which tallies the responses into a table like:
 
 | Care-experienced | Maybe | No  | Yes |
 |------------------|-------|-----|-----|
@@ -69,33 +75,33 @@ We can put these results in a contingency table, which tallies the responses int
 
 With contingency tables, we can perform chi-square tests, which examines whether the categories of the rows and columns of a contingency table are statistically significantly associated.
 
-We performed this test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.
+The chi-squared test compares the observed frequencies from the data with expected frequencies if there were null or no relationship between the variables.
 
-<details>
+With chi-squared tests, we need sufficient size in each of the cells inside the table. While the number of students not care-experienced outnumber the number of students who answered prefer not to say or yes, there are still sufficient numbers to perform the test (\>5) in each of the responses.
 
-<summary>More on the Methodology</summary>
+After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: ...
 
-The chi-squared test compares the observed frequencies from the data with expected frequencies if there were no relationship between the variables.
-
-With chi-squared tests, we need sufficient size in each of the cells inside the table. While the number of students not in care vastly outnumber the number of students who answered prefer not to say or no, there are still sufficient numbers to perform the test (\>5) in each of the responses.
+Students answering *prefer not to say* were omitted from the test.
 
 </details>
 
 ```{r}
 tables <- list()
 
-tables[["education"]] <- yphws_data_private %>% select(cla, prospects_education) %>% table()
-tables[["job"]] <- yphws_data_private %>% select(cla, prospects_job) %>% table()
-tables[["training"]] <- yphws_data_private %>% select(cla, prospects_training) %>% table()
-tables[["family"]] <- yphws_data_private %>% select(cla, prospects_other) %>% table()
-tables[["unsure"]] <- yphws_data_private %>% select(cla, prospects_notsure) %>% table()
-tables[["other"]] <- yphws_data_private %>% select(cla, prospects_other) %>% table()
+tables[["education"]] <- yphws_data_private %>% select(cla, prospects_education) %>% filter(cla != "Prefer not to say") %>% table()
+tables[["job"]] <- yphws_data_private %>% select(cla, prospects_job) %>% filter(cla != "Prefer not to say") %>% table()
+tables[["training"]] <- yphws_data_private %>% select(cla, prospects_training) %>% filter(cla != "Prefer not to say") %>% table()
+tables[["family"]] <- yphws_data_private %>% select(cla, prospects_other) %>% filter(cla != "Prefer not to say") %>% table()
+tables[["unsure"]] <- yphws_data_private %>% select(cla, prospects_notsure) %>% filter(cla != "Prefer not to say") %>% table()
+tables[["other"]] <- yphws_data_private %>% select(cla, prospects_other) %>% filter(cla != "Prefer not to say") %>% table()
 
 tables_df <- tables %>% map(as.data.frame.matrix)
 
 tables_df_suppressed <- tables_df %>% map(~ .x %>% suppress_everything())
 
-tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% round(2) %>% as.data.frame.matrix)
+tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% `*`(100) %>% round(1) %>% as.data.frame() %>% rownames_to_column("care-experienced") %>% mutate(across(!"care-experienced", ~ paste0(.x, "%"))))
+
+tables_df_suppressed <- tables_df_suppressed %>% map(~ .x %>% as.data.frame() %>% rownames_to_column("care-experienced"))
 
 tables %>% map(chisq.test) -> chisq_results
 
@@ -103,7 +109,7 @@ p_value_table <- function(question) {
   
   tibble(
     "p-value" = signif(chisq_results[[question]]$p.value, 1),
-    "Statistically Significant" = if (`p-value` < 0.05 &
+    "Significance" = if (`p-value` < 0.05 &
                                       `p-value` > 0.01)
       "statistically significant"
     else if (`p-value` < 0.01)
@@ -115,7 +121,7 @@ p_value_table <- function(question) {
 }
 ```
 
-## Chi-squared Test Results
+## Results
 
 ::: {#tbl-panel-1 layout-ncol="3"}
 ```{r}
@@ -130,7 +136,7 @@ print(kable(tables_df_suppressed[["education"]]))
 print(kable(tables_df_suppressed_proportions[["education"]]))
 ```
 
-: Proportions {#tbl-second}
+: Percentages {#tbl-second}
 
 ```{r}
 #| output: asis
@@ -139,7 +145,7 @@ print(kable(p_value_table("education")))
 
 : Results {#tbl-third}
 
-[Plan to continue in education after leaving school]{style="color:darkblue;"}
+[Plan to continue in education after leaving school]{style="color:red;"}
 :::
 
 ::: {#tbl-panel-2 layout-ncol="3"}
@@ -155,7 +161,7 @@ print(kable(tables_df_suppressed[["job"]]))
 print(kable(tables_df_suppressed_proportions[["job"]]))
 ```
 
-: Proportions {#tbl-second}
+: Percentages {#tbl-second}
 
 ```{r}
 #| output: asis
@@ -180,7 +186,7 @@ print(kable(tables_df_suppressed[["training"]]))
 print(kable(tables_df_suppressed_proportions[["training"]]))
 ```
 
-: Proportions {#tbl-second}
+: Percentages {#tbl-second}
 
 ```{r}
 #| output: asis
@@ -205,7 +211,7 @@ print(kable(tables_df_suppressed[["family"]]))
 print(kable(tables_df_suppressed_proportions[["family"]]))
 ```
 
-: Proportions {#tbl-second}
+: Percentages {#tbl-second}
 
 ```{r}
 #| output: asis
@@ -214,7 +220,7 @@ print(kable(p_value_table("family")))
 
 : Results {#tbl-third}
 
-[Plan to start a family after leaving school]{style="color:red;"}
+\[Plan to start a family after leaving school\]
 :::
 
 ::: {#tbl-panel-5 layout-ncol="3"}
@@ -230,7 +236,7 @@ print(kable(tables_df_suppressed[["unsure"]]))
 print(kable(tables_df_suppressed_proportions[["unsure"]]))
 ```
 
-: Proportions {#tbl-second}
+: Percentages {#tbl-second}
 
 ```{r}
 #| output: asis
@@ -255,7 +261,7 @@ print(kable(tables_df_suppressed[["other"]]))
 print(kable(tables_df_suppressed_proportions[["other"]]))
 ```
 
-: Proportions {#tbl-second}
+: Percentages {#tbl-second}
 
 ```{r}
 #| output: asis
@@ -264,10 +270,18 @@ print(kable(p_value_table("other")))
 
 : Results {#tbl-third}
 
-[Have other plans after leaving school]{style="color:red;"}
+\[Have other plans after leaving school\]
 :::
 
-Below shows the chi-square tests applied to the contingency tables collated together:
+Here, we identify that the students being looked after status has a very statistically significant affect with continuing education, and no significance with any other pathway after leaving school.
+
+Despite only having one pathway with statistical significance, this is noteworthy in that it can provide carers, teachers, and others involved in the health and wellbeing of care-experienced CYPs an avenue in monitoring potential shortcomings of a care-experienced CYP's potential. Further educational pursuits after school are highly associated with better health outcomes, lower deprivation, and higher earnings potential in adulthood. Reducing these inequities to access to higher education or other further educational pursuits is a key element to public health policy.
+
+<details>
+
+<summary>More on the results</summary>
+
+<br> Below shows the chi-square tests applied to the contingency tables collated together:
 
 ```{r}
 #| output: asis
@@ -279,6 +293,8 @@ chisq_results %>% imap( ~ tibble(
 )) %>% bind_rows() %>% kable()
 ```
 
-A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student's status of being looked after and the specific prospect response. Here, we identify that the students being looked after status has a statistically significant relationship with having other plans after leaving school, and with starting a family, very statistically significant with continuing education, and no significance with undertaking further skilled training, pursuing a job or with being uncertain about what to do after leaving school.
+A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student's status of being looked after and the specific prospect response.
 
 A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
+
+</details>
