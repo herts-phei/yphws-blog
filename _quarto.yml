@@ -12,7 +12,7 @@ website:
       - text: YPHWS Homepage
         href: https://www.hertshealthevidence.org/yphws/yphws.aspx
         # target: "_blank" # option won't be enabled until quarto 1.3
-    logo: "images/phei_logos_combined.png"
+    logo: "images/phei_logos_combined_with_white.png"
   description: "This blog website outputs short reports on analysis done around the Young People's Health and Well-being Survey (YPHWS). We aim to release these reports iteratively over time." 
 format:
   html:

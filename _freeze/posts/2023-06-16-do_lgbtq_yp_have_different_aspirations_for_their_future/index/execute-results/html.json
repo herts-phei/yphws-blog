@@ -1,0 +1,14 @@
+{
+  "hash": "a0fc753c4aa68931f87ab026762c4d23",
+  "result": {
+    "markdown": "---\ntitle: \"Do LGBTQ+ YP have different aspirations for their future?\"\ndate: '2023-06-16'\ncategories: ['lgbtq+', 'aspirations', 'school leavers']\nformat: html\neditor: visual\n---\n\n\n\n::: {.cell}\n\n:::\n\n\n#### Abstract\n\nYoung LGBTQ+ students face different lived experiences than those from non-care homes. This could influence their decision-making around aspirations after leaving school, such as their career, education, or training. This brief analysis seeks to ascertain whether a student's care status has a relationship with their aspirations after school.\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n```\n# A tibble: 5 × 3\n  answer                       n   pct\n  <chr>                    <int> <dbl>\n1 Gay, lesbian or bisexual  1035   9.3\n2 Heterosexual/Straight     8443  75.7\n3 Other                      233   2.1\n4 Prefer not to say          660   5.9\n5 Undecided/Questioning      667   6  \n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
