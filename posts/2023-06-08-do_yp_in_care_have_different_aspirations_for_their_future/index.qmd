@@ -14,14 +14,12 @@ library(purrr)
 library(tidyverse)
 library(knitr)
 library(simplermarkdown)
+library(here)
 
 box::use(../../../phei_functions/hes)
 
-suppress_everything <- function(df) {
-  
-  df %>% mutate(across(everything(), ~ if_else(.x <= 7 & .x != 0, NA, .x) %>% round(.x/5)*5))
-  
-}
+source(here("R", "table.R"))
+source(here("R", "functions.R"))
 
 ```
 
@@ -59,7 +57,9 @@ One of the questions coded in the YPHWS survey is ***what do you plan to do as a
 
 -   Other
 
-We performed a chi-squared test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.
+We performed a chi-squared test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. The chi-squared test tests statistical significance of the association between students' care-experienced status and their responses to different pathways after school.
+
+Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.
 
 <details>
 
@@ -106,24 +106,11 @@ tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.mat
 tables_df_suppressed <- tables_df_suppressed %>% map(~ .x %>% as.data.frame() %>% rownames_to_column("care-experienced"))
 
 tables %>% map(chisq.test) -> chisq_results
-
-p_value_table <- function(question) {
-  
-  tibble(
-    "p-value" = signif(chisq_results[[question]]$p.value, 1),
-    "Significance" = if (`p-value` < 0.05 &
-                                      `p-value` > 0.01)
-      "statistically significant"
-    else if (`p-value` < 0.01)
-      "very statistically significant"
-    else if (`p-value` > 0.05)
-      "not statistically significant"
-  )
-  
-}
 ```
 
 ## Results
+
+### Education
 
 ::: {#tbl-panel-1 layout-ncol="3"}
 ```{r}
@@ -147,8 +134,10 @@ print(kable(p_value_table("education")))
 
 : Results {#tbl-third}
 
-[Plan to continue in education after leaving school]{style="color:red;"}
+Plan to continue in education after leaving school
 :::
+
+### Job/career
 
 ::: {#tbl-panel-2 layout-ncol="3"}
 ```{r}
@@ -175,6 +164,8 @@ print(kable(p_value_table("job")))
 Plan to get a job after leaving school
 :::
 
+### Training
+
 ::: {#tbl-panel-3 layout-ncol="3"}
 ```{r}
 #| output: asis
@@ -199,6 +190,8 @@ print(kable(p_value_table("training")))
 
 Plan to train for a skilled job after leaving school
 :::
+
+### Family
 
 ::: {#tbl-panel-4 layout-ncol="3"}
 ```{r}
@@ -225,6 +218,8 @@ print(kable(p_value_table("family")))
 Plan to start a family after leaving school
 :::
 
+## Uncertain
+
 ::: {#tbl-panel-5 layout-ncol="3"}
 ```{r}
 #| output: asis
@@ -250,6 +245,8 @@ print(kable(p_value_table("unsure")))
 Aren't sure what they want to do after leaving school
 :::
 
+### Other
+
 ::: {#tbl-panel-6 layout-ncol="3"}
 ```{r}
 #| output: asis
@@ -274,6 +271,8 @@ print(kable(p_value_table("other")))
 
 Have other plans after leaving school
 :::
+
+## Conclusions/implications
 
 Here, we identify that the students being looked after status has a very statistically significant effect with continuing education, and no significance with any other pathway after leaving school.
 
