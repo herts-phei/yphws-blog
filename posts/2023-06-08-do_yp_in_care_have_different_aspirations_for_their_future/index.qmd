@@ -218,7 +218,7 @@ print(kable(p_value_table("family")))
 Plan to start a family after leaving school
 :::
 
-## Uncertain
+### Uncertain
 
 ::: {#tbl-panel-5 layout-ncol="3"}
 ```{r}
