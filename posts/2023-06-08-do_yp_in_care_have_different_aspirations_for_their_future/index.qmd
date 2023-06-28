@@ -26,6 +26,12 @@ source(here("R", "functions.R"))
 ```{r}
 yphws_data_private <- readRDS("~/projects/yphws_analysis/data/private/yphws_data_private.Rds")
 
+library(pins)
+board <- board_connect(auth = "envvar")
+
+# yphws_lookup <- pin_read(board, "ayu/yphws_lookup")
+
+
 count <- yphws_data_private$cla %>% table() %>% as_tibble() %>% rename("answer" = ".")
 
 care_students <- count %>% filter(answer == "Yes") %>% pull(n)
@@ -81,7 +87,7 @@ The chi-squared test compares the observed frequencies from the data with expect
 
 With chi-squared tests, we need sufficient size in each of the cells inside the table. While the number of students not care-experienced outnumber the number of students who answered prefer not to say or yes, there are still sufficient numbers to perform the test (\>5) in each of the responses.
 
-After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: ...
+After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: [BMJ - The Chi squared tests](https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/8-chi-squared-tests)
 
 Students answering *prefer not to say* were omitted from the test.
 
@@ -136,6 +142,30 @@ print(kable(p_value_table("education")))
 
 Plan to continue in education after leaving school
 :::
+
+```{r}
+#| label: fig-stack-bar-graph
+#| fig-cap: "Normalised bar graph showing proportion of answers for care-experienced students and non care-experienced students on continuing education after leaving school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["education"]] %>% pivot_longer(
+  cols = c("Maybe", "No", "Yes"),
+  names_to = "answer",
+  values_to = "number"
+) %>% 
+  ggplot2::ggplot(aes(`care-experienced`, number, fill = answer, group = answer)) + 
+  geom_col(position = "fill", alpha = 0.7) + 
+  geom_text(aes(label = number), position = position_fill(vjust = 0.5)) +
+  coord_flip() + 
+  labs(y = "Percentage") + 
+  scale_y_continuous(labels = scales::percent_format(scale = 100)) +
+  ggplot2::scale_fill_manual(values = c("#3969B5", "#46C3AE", "#99D5F3")) +
+  ggplot2::guides(fill = guide_legend(reverse=TRUE)) +
+  ggplot2::theme(text = element_text(size = 12),
+                 legend.key = element_rect(fill = "transparent", colour = "transparent"),
+                 legend.position = "bottom")
+```
 
 ### Job/career
 
@@ -299,3 +329,22 @@ A p.value of less than 0.05 indicates statistical significance, and that there i
 A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
 
 </details>
+
+```{r}
+tables_df_suppressed[["education"]] %>% pivot_longer(
+  cols = c("Maybe", "No", "Yes"),
+  names_to = "answer",
+  values_to = "number"
+) %>% 
+  ggplot2::ggplot(aes(`care-experienced`, number, fill = answer, group = answer)) + 
+  geom_col(position = "fill", alpha = 0.7) + 
+  geom_text(aes(label = number), position = position_fill(vjust = 0.5)) +
+  coord_flip() + 
+  labs(y = "Percentage") + 
+  scale_y_continuous(labels = scales::percent_format(scale = 100)) +
+  ggplot2::scale_fill_manual(values = c("#3969B5", "#46C3AE", "#99D5F3")) +
+  # ggpubr::theme_pubclean() +
+  ggplot2::theme(text = element_text(size = 10),
+                 legend.key = element_rect(fill = "transparent", colour = "transparent"),
+                 legend.position = "bottom")
+```

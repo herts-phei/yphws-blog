@@ -26,7 +26,7 @@ source(here("R", "functions.R"))
 ```{r}
 yphws_data_private <- readRDS("~/projects/yphws_analysis/data/private/yphws_data_private.Rds")
 
-# yphws_data_private <- yphws_data_private %>% filter(sexuality %in% c("Gay, lesbian or bisexual", "Heterosexual/Straight"))
+yphws_data_private <- yphws_data_private %>% filter(sexuality %in% c("Gay, lesbian or bisexual", "Heterosexual/Straight"))
 
 count <- yphws_data_private$sexuality %>% table() %>% as_tibble() %>% rename("answer" = ".", "number" = "n")
 
@@ -131,7 +131,6 @@ print(kable(p_value_table("education")))
 : Results {#tbl-third}
 
 Plan to continue in education after leaving school
-
 :::
 
 ::: {#tbl-panel-2 layout-ncol="3"}
