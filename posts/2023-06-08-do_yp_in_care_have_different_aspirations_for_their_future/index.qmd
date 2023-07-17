@@ -4,6 +4,7 @@ date: '2023-06-15'
 categories: ['care', 'aspirations', 'school leavers']
 format: html
 editor: visual
+image: "HCC 2023 - Priory School - high-res-47.jpg"
 ---
 
 ```{r include=FALSE}
@@ -23,7 +24,7 @@ source(here("R", "functions.R"))
 
 ```
 
-```{r}
+```{r include=FALSE}
 yphws_data_private <- readRDS("~/projects/yphws_analysis/data/private/yphws_data_private.Rds")
 
 library(pins)
@@ -107,7 +108,7 @@ tables_df <- tables %>% map(as.data.frame.matrix)
 
 tables_df_suppressed <- tables_df %>% map(~ .x %>% suppress_everything())
 
-tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% `*`(100) %>% round(1) %>% as.data.frame() %>% rownames_to_column("care-experienced") %>% mutate(across(!"care-experienced", ~ paste0(.x, "%"))))
+tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% `*`(100) %>% round(0) %>% as.data.frame() %>% rownames_to_column("care-experienced") %>% mutate(across(!"care-experienced", ~ paste0(.x, "%"))))
 
 tables_df_suppressed <- tables_df_suppressed %>% map(~ .x %>% as.data.frame() %>% rownames_to_column("care-experienced"))
 
@@ -115,6 +116,23 @@ tables %>% map(chisq.test) -> chisq_results
 ```
 
 ## Results
+
+::: {#tbl-panel-0 layout-ncol="1"}
+```{r}
+#| output: asis
+summary <- tibble(education = "&#x2705;",
+       job = "&#x274C;",
+       training = "&#x274C;",
+       family = "&#x274C;",
+       unsure = "&#x274C;",
+       other = "&#x274C;")
+
+print(kable(summary))
+```
+: Summary Table of Aspirational Pathways
+
+Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students
+:::
 
 ### Education
 
@@ -154,17 +172,23 @@ tables_df_suppressed[["education"]] %>% pivot_longer(
   names_to = "answer",
   values_to = "number"
 ) %>% 
+  dplyr::mutate(dplyr::across(`care-experienced`, ~ case_when(. == "No" ~ "Non care-experienced\nstudents", 
+                                                            . == "Yes" ~ "Care-experienced\nstudents",
+                                                            TRUE ~ NA)
+                              )
+                ) %>% 
   ggplot2::ggplot(aes(`care-experienced`, number, fill = answer, group = answer)) + 
   geom_col(position = "fill", alpha = 0.7) + 
   geom_text(aes(label = number), position = position_fill(vjust = 0.5)) +
   coord_flip() + 
   labs(y = "Percentage") + 
+  ggpubr::theme_pubclean() +
   scale_y_continuous(labels = scales::percent_format(scale = 100)) +
   ggplot2::scale_fill_manual(values = c("#3969B5", "#46C3AE", "#99D5F3")) +
   ggplot2::guides(fill = guide_legend(reverse=TRUE)) +
   ggplot2::theme(text = element_text(size = 12),
                  legend.key = element_rect(fill = "transparent", colour = "transparent"),
-                 legend.position = "bottom")
+                 legend.position = "bottom", axis.title.y = element_blank())
 ```
 
 ### Job/career
@@ -329,22 +353,3 @@ A p.value of less than 0.05 indicates statistical significance, and that there i
 A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
 
 </details>
-
-```{r}
-tables_df_suppressed[["education"]] %>% pivot_longer(
-  cols = c("Maybe", "No", "Yes"),
-  names_to = "answer",
-  values_to = "number"
-) %>% 
-  ggplot2::ggplot(aes(`care-experienced`, number, fill = answer, group = answer)) + 
-  geom_col(position = "fill", alpha = 0.7) + 
-  geom_text(aes(label = number), position = position_fill(vjust = 0.5)) +
-  coord_flip() + 
-  labs(y = "Percentage") + 
-  scale_y_continuous(labels = scales::percent_format(scale = 100)) +
-  ggplot2::scale_fill_manual(values = c("#3969B5", "#46C3AE", "#99D5F3")) +
-  # ggpubr::theme_pubclean() +
-  ggplot2::theme(text = element_text(size = 10),
-                 legend.key = element_rect(fill = "transparent", colour = "transparent"),
-                 legend.position = "bottom")
-```

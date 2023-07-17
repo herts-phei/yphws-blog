@@ -1,9 +1,10 @@
 ---
-title: "Do LGBTQ+ YP have different aspirations for their future?"
-date: '2023-06-16'
+title: "Do LGBQ+ YP have different aspirations for their future?"
+date: Sys.Date()
 categories: ['lgbtq+', 'aspirations', 'school leavers']
 format: html
 editor: visual
+image: "rainbow_lanyard.jpg"
 ---
 
 ```{r include=FALSE}
@@ -26,7 +27,7 @@ source(here("R", "functions.R"))
 ```{r}
 yphws_data_private <- readRDS("~/projects/yphws_analysis/data/private/yphws_data_private.Rds")
 
-yphws_data_private <- yphws_data_private %>% filter(sexuality %in% c("Gay, lesbian or bisexual", "Heterosexual/Straight"))
+yphws_data_private <- yphws_data_private
 
 count <- yphws_data_private$sexuality %>% table() %>% as_tibble() %>% rename("answer" = ".", "number" = "n")
 
@@ -39,7 +40,7 @@ count <- count %>% mutate("%" = round((number/total_students)*100, 1))
 
 #### Abstract
 
-Young LGBTQ+ students face different lived experiences than those from non-care homes. This could influence their decision-making around aspirations after leaving school, such as their career, education, or training. This brief analysis seeks to ascertain whether a student's sexual orientation has a relationship with their aspirations after school.
+Young LGBTQ+ students face different lived experiences than straight/heterosexual students. This could influence their decision-making around aspirations after leaving school, such as their career, education, or training. This brief analysis seeks to ascertain whether a student's sexual orientation has a relationship with their aspirations after school.
 
 ```{r}
 #| output: asis
@@ -49,6 +50,8 @@ print(kable(count))
 : Summary count of students on question asking about sexual orientation in YPHWS {#tbl-summary-count}
 
 The above table displays the proportion of responses around sexual orientation in YPHWS. *Heterosexual/straight* students make up just over 3/4 of the total responses, followed by *gay, lesbian, or bisexual* at just under 10%. Smaller proportions ticked options *other*, *undecided/questioning*, and *prefer not to say*.
+
+Here, we identify that a student's ssexual orientation has a very statistically significant relationship with continuing education, but with no statistical significance with any of the other pathways after school.
 
 ## Methods
 
@@ -67,6 +70,8 @@ One of the questions coded in the YPHWS survey is ***what do you plan to do as a
 -   Other
 
 We performed a chi-squared test for each of the different prospects questions on the tables below for each of the responses, along with their relative proportions. Note, these numbers have been suppressed to the nearest 5 to prevent disclosure, but the actual chi-squared tests have been performed on the raw numbers.
+
+For the purposes of this analysis, students who answered *undecided/questioning* and *other* are grouped together with students who answered *gay, lesbian or bisexual*. Students who answered *prefer not to say* were excluded, owing to the large difference in responses between this category and the other relevant categories.
 
 <details>
 
@@ -88,18 +93,28 @@ The chi-squared test compares the observed frequencies from the data with expect
 
 With chi-squared tests, we need sufficient size in each of the cells inside the table. While the number of students not care-experienced outnumber the number of students who answered prefer not to say or yes, there are still sufficient numbers to perform the test (\>5) in each of the responses.
 
-After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: ...
+After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: [BMJ - The Chi squared tests](https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/8-chi-squared-tests)
+
+Students answering *prefer not to say* were omitted from the test.
 
 </details>
 
 ```{r}
+
+yphws_data_private <- yphws_data_private %>% 
+  dplyr::filter(sexuality != "Prefer not to say") %>% 
+  dplyr::mutate(across(sexuality, ~ case_when(. == "Heterosexual/Straight" ~ "Heterosexual",
+                                            . == "Undecided/Questioning" ~ "LGBQ+",
+                                            . == "Gay, lesbian or bisexual" ~ "LGBQ+",
+                                            . == "Other" ~ "LGBQ+")))
+
 tables <- chi_sq_tables("sexuality")
 
 tables_df <- tables %>% map(as.data.frame.matrix)
 
 tables_df_suppressed <- tables_df %>% map(~ .x %>% suppress_everything())
 
-tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% `*`(100) %>% round(1) %>% as.data.frame() %>% rownames_to_column("sexuality") %>% mutate(across(!"sexuality", ~ paste0(.x, "%"))))
+tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% `*`(100) %>% round(0) %>% as.data.frame() %>% rownames_to_column("sexuality") %>% mutate(across(!"sexuality", ~ paste0(.x, "%"))))
 
 tables_df_suppressed <- tables_df_suppressed %>% map(~ .x %>% as.data.frame() %>% rownames_to_column("sexuality"))
 
@@ -107,6 +122,8 @@ tables %>% map(chisq.test) -> chisq_results
 ```
 
 ## Results
+
+### Education
 
 ::: {#tbl-panel-1 layout-ncol="3"}
 ```{r}
@@ -133,6 +150,8 @@ print(kable(p_value_table("education")))
 Plan to continue in education after leaving school
 :::
 
+### Job/career
+
 ::: {#tbl-panel-2 layout-ncol="3"}
 ```{r}
 #| output: asis
@@ -157,6 +176,8 @@ print(kable(p_value_table("job")))
 
 Plan to get a job after leaving school
 :::
+
+### Training
 
 ::: {#tbl-panel-3 layout-ncol="3"}
 ```{r}
@@ -183,6 +204,8 @@ print(kable(p_value_table("training")))
 Plan to train for a skilled job after leaving school
 :::
 
+### Family
+
 ::: {#tbl-panel-4 layout-ncol="3"}
 ```{r}
 #| output: asis
@@ -207,6 +230,8 @@ print(kable(p_value_table("family")))
 
 Plan to start a family after leaving school
 :::
+
+### Uncertain
 
 ::: {#tbl-panel-5 layout-ncol="3"}
 ```{r}
@@ -233,6 +258,8 @@ print(kable(p_value_table("unsure")))
 Aren't sure what they want to do after leaving school
 :::
 
+### Other
+
 ::: {#tbl-panel-6 layout-ncol="3"}
 ```{r}
 #| output: asis
@@ -258,7 +285,11 @@ print(kable(p_value_table("other")))
 Have other plans after leaving school
 :::
 
-Here, we identify that the a student's LGBTQ+ label has a very statistically significant effect with ...
+## Conclusions/implications
+
+We identify that whether a student is straight/heterosexual or part of the LGBQ+ group has a very statistically significant effect with plans to get a job after leaving school, plans to pursue training, and uncertainty with what to do.
+
+This is noteworthy in that it highlights differences
 
 <details>
 
@@ -278,6 +309,10 @@ chisq_results %>% imap( ~ tibble(
 
 A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student's LGBTQ+ label and the specific prospect response.
 
-A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
+A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a student's sexual orientation affects their decision for pursuing a job after leaving school, training, and uncertainty with what to do, but these are beyond the scope of this report.
 
 </details>
+
+## Sub-analysis on transgender students
+
+The crux of this analysis focuses on the sexual orientation of students, what is separate from that of biological sex. For the 2022 release of YPHWS, the survey refined the question on biological sex to one around gender identity, which expanded the number of options available, allowing students to tick non-binary and transgender as responses.
