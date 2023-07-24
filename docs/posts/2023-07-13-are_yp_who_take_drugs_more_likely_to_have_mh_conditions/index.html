@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hertfordshire Public Health Evidence and Intelligence">
-<meta name="dcterms.date" content="2023-07-20">
+<meta name="dcterms.date" content="2023-07-24">
 <meta name="description" content="This analysis explores the link between drug use in young people and association with mental health conditions.">
 
 <title>YPHWS Spotlight Analysis - Are young people who take drugs more likely to have mental health conditions?</title>
@@ -101,6 +101,10 @@ ga('send', {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Blogposts</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
@@ -144,7 +148,7 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 20, 2023</p>
+        <p class="date">July 24, 2023</p>
       </div>
     </div>
     
@@ -170,7 +174,7 @@ ga('send', {
   <li><a href="#is-taking-drugs-linked-to-mental-health-conditions" id="toc-is-taking-drugs-linked-to-mental-health-conditions" class="nav-link" data-scroll-target="#is-taking-drugs-linked-to-mental-health-conditions">Is taking drugs linked to mental health conditions?</a></li>
   <li><a href="#does-sex-impact-the-likelihood-of-having-a-mental-health-condition" id="toc-does-sex-impact-the-likelihood-of-having-a-mental-health-condition" class="nav-link" data-scroll-target="#does-sex-impact-the-likelihood-of-having-a-mental-health-condition">Does sex impact the likelihood of having a mental health condition?</a></li>
   <li><a href="#does-deprivation-impact-the-likelihood-of-having-a-mental-health-condition" id="toc-does-deprivation-impact-the-likelihood-of-having-a-mental-health-condition" class="nav-link" data-scroll-target="#does-deprivation-impact-the-likelihood-of-having-a-mental-health-condition">Does deprivation impact the likelihood of having a mental health condition?</a></li>
-  <li><a href="#does-district-impact-the-likelihood-of-having-a-mental-health-condition" id="toc-does-district-impact-the-likelihood-of-having-a-mental-health-condition" class="nav-link" data-scroll-target="#does-district-impact-the-likelihood-of-having-a-mental-health-condition">Does district impact the likelihood of having a mental health condition?</a></li>
+  <li><a href="#does-district-of-residence-impact-the-likelihood-of-having-a-mental-health-condition" id="toc-does-district-of-residence-impact-the-likelihood-of-having-a-mental-health-condition" class="nav-link" data-scroll-target="#does-district-of-residence-impact-the-likelihood-of-having-a-mental-health-condition">Does district of residence impact the likelihood of having a mental health condition?</a></li>
   </ul></li>
   <li><a href="#conclusionsimplications" id="toc-conclusionsimplications" class="nav-link" data-scroll-target="#conclusionsimplications"><strong>Conclusions/implications</strong></a></li>
   </ul>
@@ -185,7 +189,7 @@ ga('send', {
 <p><img src="mental_health_service.jpg" class="img-fluid" width="363"></p>
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract"><strong>Abstract</strong></h2>
-<p>There are established links between the effect drugs have on an individuals state of mental health. With increasing numbers of young people seeking mental health support, this blog looks at how the impact of drugs may exacerbate the issue.</p>
+<p>There are established links between the effect taking drugs has on a population’s mental health. With increasing numbers of young people seeking mental health support, this blog looks at how the impact of drugs may exacerbate the issue.</p>
 <!-- ## **Descriptive Analysis** -->
 <div class="cell">
 
@@ -283,13 +287,13 @@ ga('send', {
 <p>In the following, we treat accessing mental health as the response variable, meaning only individuals who claim they categorically did or did not access mental health services are included in the analysis.</p>
 <p>In the following report we assess how drugs relate to:</p>
 <ul>
-<li>Worrying about mental health</li>
-<li>Skipping school due to mental health</li>
-<li>Needing mental health services</li>
-<li>Having mental health conditions</li>
+<li>Worrying about mental health;</li>
+<li>Skipping school due to mental health;</li>
+<li>Needing mental health services;</li>
+<li>Having mental health conditions.</li>
 </ul>
-<p>The analysis does not confirm causation. Predictors can only be linked to response variables (particularly if they are significant), it cannot be said for certain whether the predictor causes the response.</p>
-<!-- <details> -->
+<p>The analysis does not confirm causation. Predictors can only be linked to response variables (particularly if they are significant). It cannot be said for certain whether the predictor causes the response.</p>
+<p>In some of the examples below, there are graphical representations of the logistic regression analysis and odds ratio outputs. In these graphs, there is a baseline group in which other groups are compared against (baselines are clarified in the examples), from which groups can be claimed to be more or less likely to have a certain characteristic (e.g.&nbsp;to have a mental health condition). Each group has an associated confidence interval, in which we can be 99% certain the real value lies in. Groups can be determined to be significantly different from one another if the intervals do not overlap, or the baseline group does not fall within the groups interval. <!-- <details> --></p>
 <!-- <br> -->
 <!-- <summary>More on logistic regression</summary> -->
 </section>
@@ -317,7 +321,7 @@ ga('send', {
 
 </div>
 <p>A total of 735 students in this analysis took drugs, of which 275 students accessed mental health services.</p>
-<p>After conducting a logistic regression analysis, it was found that having taken drugs was a significant predictor in accessing mental health services, with students who took drugs being 0.16, 3.8 times more likely to access mental health services than students who did not take drugs. This predictor is significant (p-value &lt; 0.05).</p>
+<p>After conducting a logistic regression analysis, it was found that having taken drugs was a significant predictor in accessing mental health services, with students who took drugs being 3.8 times more likely to access mental health services than students who did not take drugs. This predictor is significant (p-value &lt; 0.05).</p>
 </section>
 <section id="is-taking-drugs-linked-to-mental-health-conditions" class="level3">
 <h3 class="anchored" data-anchor-id="is-taking-drugs-linked-to-mental-health-conditions">Is taking drugs linked to mental health conditions?</h3>
@@ -334,7 +338,7 @@ ga('send', {
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Compared to the baseline of females who have not taken drugs, females who have taken drugs are 3.8417666 times more likely to have a mental health condition. Among those who have claimed to have taken drugs, females are 4.19 times more likely than males to have a mental health condition, a significant difference. Males who have taken drugs are 2.8 times more likely to have a mental health condition than males who have not taken drugs.</p>
+<p>Compared to the baseline of females who have not taken drugs, females who have taken drugs are 3.84 times more likely to have a mental health condition. Among those who have claimed to have taken drugs, females are 4.19 times more likely than males to have a mental health condition, a significant difference. Males who have taken drugs are 2.8 times more likely to have a mental health condition than males who have not taken drugs.</p>
 </section>
 <section id="does-deprivation-impact-the-likelihood-of-having-a-mental-health-condition" class="level3">
 <h3 class="anchored" data-anchor-id="does-deprivation-impact-the-likelihood-of-having-a-mental-health-condition">Does deprivation impact the likelihood of having a mental health condition?</h3>
@@ -345,196 +349,19 @@ ga('send', {
 </div>
 <p>For individuals who have claimed to have taken drugs, the likelihood of having a mental health condition is lowest for those residing in IMD Quintile 2 (most deprived). However, the differences between each Quintile are not significant.</p>
 </section>
-<section id="does-district-impact-the-likelihood-of-having-a-mental-health-condition" class="level3">
-<h3 class="anchored" data-anchor-id="does-district-impact-the-likelihood-of-having-a-mental-health-condition">Does district impact the likelihood of having a mental health condition?</h3>
+<section id="does-district-of-residence-impact-the-likelihood-of-having-a-mental-health-condition" class="level3">
+<h3 class="anchored" data-anchor-id="does-district-of-residence-impact-the-likelihood-of-having-a-mental-health-condition">Does district of residence impact the likelihood of having a mental health condition?</h3>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>For individuals who have claimed to have taken drugs, the likelihood of having mental health condition is lowest for those residing in East Hertfordshire. However, the differences between each district are not significant.</p>
-<!-- ### Does ethnicity impact likelihood of accessing mental health services? -->
-<!-- ```{r} -->
-<!-- test_ethnicity <- model_data %>%  -->
-<!--   filter(mental_accessed %in% c("Yes", "No"), -->
-<!--          drug_yes_no == "yes", -->
-<!--          ethnicity != "Prefer not to say", -->
-<!--          !is.na(ethnicity)) %>%  -->
-<!--   mutate(mental_accessed = factor(mental_accessed, levels = c("Yes", "No")), -->
-<!--          # District = factor(District, levels = c("Stevenage", "Broxbourne", -->
-<!--          #                                        "Dacorum", "East Hertfordshire", -->
-<!--          #                                        "Hertsmere", -->
-<!--          #                                        "North Hertfordshire", "St Albans", -->
-<!--          #                                        "Three Rivers", "Watford", -->
-<!--          #                                          "Welwyn Hatfield" )) -->
-<!--          ethnicity = gsub("\\ -.*", "", ethnicity), -->
-<!--          ethnicity = ifelse(ethnicity == "White", "White", "BAME") -->
-<!--          ) -->
-<!-- d <- glm(data = test_ethnicity, mental_accessed ~ ethnicity, family = binomial) -->
-<!-- # exp(coef(d)) -->
-<!-- # exp(confint(d)) -->
-<!-- df <- as.data.frame(exp(coef(d))) %>%  -->
-<!--   rename(Coefficient =  "exp(coef(d))") %>%  -->
-<!--   mutate(Ethnicity = rownames(.)) %>%  -->
-<!--   left_join(mutate(as.data.frame(exp(confint(d))), Ethnicity = row.names(.))) %>%  -->
-<!--   mutate(Ethnicity = gsub("Ethn", "", Ethnicity)) %>%  -->
-<!--   filter(Ethnicity != "(Intercept)") %>%  -->
-<!--   rename(LCL = "2.5 %", UCL = "97.5 %") -->
-<!-- ggplot(df, aes(x = Coefficient, y = Ethnicity)) +  -->
-<!--     geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") + -->
-<!--     geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height =  -->
-<!--                      .2, color = "gray50") + -->
-<!--     geom_point(size = 3.5, color = "blue") + -->
-<!--     theme_bw()+ -->
-<!--     theme(panel.grid.minor = element_blank()) + -->
-<!--     ylab("District") + -->
-<!--     xlab("Odds ratio") + -->
-<!--   #annotate("text", x = 1.1, y = 2, angle=90, size=3, label = "IMD 1") + -->
-<!--     ggtitle("Access to mental health services having taken drugs by District - Broxbourne Baseline") -->
-<!-- ``` -->
-<!-- For individuals who have claimed to have taken drugs, the likelihood of accessing mental health services is lowest for those residing in Broxbourne. However, the differences between each quintile are not significant. -->
-<!-- ## Life satisfaction -->
-<!-- ```{r} -->
-<!-- test_life <- model_data %>%  -->
-<!--  # filter(mental_accessed %in% c("Yes", "No")) %>%  -->
-<!--   mutate(mental_accessed = factor(mental_accessed, levels = c("Yes", "No")), -->
-<!--          life_satisfied = ifelse(life_satisfied == "low", 0, 1), -->
-<!--         # life_satisfied = factor(life_satisfied, levels = c("low", "high")) -->
-<!--          ) -->
-<!-- life <- glm(data = test_life, life_satisfied ~ drug_yes_no, family = binomial) -->
-<!-- # exp(coef(d)) -->
-<!-- # exp(confint(d)) -->
-<!--   df <- as.data.frame(exp(coef(life))) %>%  -->
-<!--     rename(Coefficient =  "exp(coef(life))") %>%  -->
-<!--     mutate(Drugs = rownames(.)) %>%  -->
-<!--   left_join(mutate(as.data.frame(exp(confint(life))), Drugs = row.names(.))) %>%  -->
-<!--   mutate(Drugs = gsub("drug_yes_no", "", Drugs)) %>%  -->
-<!--   filter(Drugs != "(Intercept)") %>%  -->
-<!--   rename(LCL = "2.5 %", UCL = "97.5 %") -->
-<!-- ``` -->
 </section>
 </section>
 <section id="conclusionsimplications" class="level2">
 <h2 class="anchored" data-anchor-id="conclusionsimplications"><strong>Conclusions/implications</strong></h2>
-<p>In this report, we highlight that there is a significant link between drug use and the impact on an individuals mental health. Young people who take drugs are more likely to worry about their mental health, which is a cause for concern as drug use is often conducted in order to suppress mental health conditions, such as anxiety and depression. Young people who take drugs are also more likely to skip school do due mental health issues, which in turn will potentially effect their education in the short and long term. Students achieving the English Baccalaureate fall by roughly 15% if 14 days are taken off during the academic year. Despite these findings, it cannot be said for certain whether drug use <em>causes</em> issues that arise with mental health, it can only be claimed there is a link between the two variables.</p>
-<!-- ```{r} -->
-<!-- model_data <- data %>%  -->
-<!--   dplyr::select(age, District, sex, drug_ever, skipschool_mentalhealth, imd_quintile, schyear, life_satisfied) %>%  -->
-<!--   filter(!is.na(drug_ever),  -->
-<!--          !is.na(skipschool_mentalhealth)) %>%  -->
-<!--   dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs", -->
-<!--                               "no", -->
-<!--                               "yes")), -->
-<!--                 skipschool_mentalhealth = ifelse(skipschool_mentalhealth == "Yes", "Yes", "No") -->
-<!--          ) -->
-<!-- data_dd_odds_female <- -->
-<!--   matrix( -->
-<!--     c( -->
-<!--       nrow(model_data[model_data$drug_yes_no == "no" & -->
-<!--                 model_data$skipschool_mentalhealth == "No" & -->
-<!--                 model_data$sex == "Female", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "no" & -->
-<!--                 model_data$skipschool_mentalhealth == "Yes" & -->
-<!--                 model_data$sex == "Female", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "No" & -->
-<!--                 model_data$sex == "Female", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "Yes" & -->
-<!--                 model_data$sex == "Female", ]) -->
-<!--     ), -->
-<!--     nrow = 2, -->
-<!--     ncol = 2, -->
-<!--     byrow = TRUE -->
-<!--   ) -->
-<!-- rownames(data_dd_odds_female) <- c('Drugs not taken', 'Drugs taken') -->
-<!-- colnames(data_dd_odds_female) <- c('Not skipped', 'Skipped') -->
-<!-- ## p-value < 0.05. Can reject null hypothesis. The drugs taken and mental health accessed are dependent variables -->
-<!-- #oddsratio(data_dd_odds_female) -->
-<!-- # Overall, females who have taken drugs are 5.090162 times more likely to access MHS than females who have not taken drugs -->
-<!-- # Male -->
-<!-- data_dd_odds_male <- -->
-<!--   matrix( -->
-<!--     c( -->
-<!--       nrow(model_data[model_data$drug_yes_no == "no" & -->
-<!--                 model_data$skipschool_mentalhealth == "No" & -->
-<!--                 model_data$sex == "Male", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "no" & -->
-<!--                 model_data$skipschool_mentalhealth == "Yes" & -->
-<!--                 model_data$sex == "Male", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "No" & -->
-<!--                 model_data$sex == "Male", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "Yes" & -->
-<!--                 model_data$sex == "Male", ]) -->
-<!--     ), -->
-<!--     nrow = 2, -->
-<!--     ncol = 2, -->
-<!--     byrow = TRUE -->
-<!--   ) -->
-<!-- rownames(data_dd_odds_male) <- c('Drugs not taken', 'Drugs taken') -->
-<!-- colnames(data_dd_odds_male) <- c('Not Skipped', 'Skipped') -->
-<!-- ## p-value < 0.05. Can reject null hypothesis. The drugs taken and mental health accessed are dependent variables -->
-<!-- male_ratio <- oddsratio(data_dd_odds_male) -->
-<!-- # Overall, males who have taken drugs are 3.141051 times more likely to access MHS than males who have not taken drugs -->
-<!-- data_dd_odds_male_female <- -->
-<!--   matrix( -->
-<!--     c( -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "No" & -->
-<!--                 model_data$sex == "Male", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "Yes" & -->
-<!--                 model_data$sex == "Male", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "No" & -->
-<!--                 model_data$sex == "Female", ]), -->
-<!--       nrow(model_data[model_data$drug_yes_no == "yes" & -->
-<!--                 model_data$skipschool_mentalhealth == "Yes" & -->
-<!--                 model_data$sex == "Female", ]) -->
-<!--     ), -->
-<!--     nrow = 2, -->
-<!--     ncol = 2, -->
-<!--     byrow = TRUE -->
-<!--   ) -->
-<!-- rownames(data_dd_odds_male_female) <- c('Male', 'Female') -->
-<!-- colnames(data_dd_odds_male_female) <-  c('Not Skipped', 'Skipped') -->
-<!-- ## p-value < 0.05. Can reject null hypothesis. The drugs taken and mental health accessed are dependent variables -->
-<!-- male_female_ratio <- oddsratio(data_dd_odds_male_female) -->
-<!-- test_sex <- model_data %>%  -->
-<!--   filter(skipschool_mentalhealth %in% c("Yes", "No"), -->
-<!--          sex %in% c("Male", "Female") -->
-<!--       #   drug_yes_no == "yes", -->
-<!--         # !(sex %in% c("Prefer not to say")) -->
-<!--       ) %>%  -->
-<!--   mutate(drug_yes_no = ifelse(drug_yes_no == "yes", "Drugs taken", "Drugs not taken"), -->
-<!--          skipschool_mentalhealth = ifelse(skipschool_mentalhealth == "Yes", 1, 0), -->
-<!--          group = paste0(drug_yes_no, " - ", sex)) -->
-<!-- a <- glm(data = test_sex, skipschool_mentalhealth ~ group, family = binomial) -->
-<!-- # exp(coef(a)) -->
-<!-- # exp(confint(a)) -->
-<!-- # summary(a) -->
-<!-- df <- as.data.frame(exp(coef(a))) %>%  -->
-<!--   rename(Coefficient =  "exp(coef(a))") %>%  -->
-<!--   #  mutate(IMD = gsub("imd_quintile", "",rownames(.))) %>% -->
-<!--   mutate(Sex = rownames(.)) %>%  -->
-<!--   left_join(mutate(as.data.frame(exp(confint(a))), Sex = row.names(.))) %>%  -->
-<!--   mutate(Sex = gsub("group", "", Sex)) %>%  -->
-<!--   filter(Sex != "(Intercept)") %>%  -->
-<!--   rename(LCL = "2.5 %", UCL = "97.5 %") -->
-<!-- ggplot(df, aes(x = Coefficient, y = Sex)) +  -->
-<!--     geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") + -->
-<!--     geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height =  -->
-<!--                      .2, color = "gray50") + -->
-<!--     geom_point(size = 3.5, color = "blue") + -->
-<!--     theme_bw()+ -->
-<!--     theme(panel.grid.minor = element_blank()) + -->
-<!--     ylab("Sex") + -->
-<!--     xlab("Odds ratio") + -->
-<!--   annotate("text", x = 1.1, y = 2, angle=90, size=3, label = "Drugs not taken - Female") + -->
-<!--     ggtitle("Access to mental health services having taken drugs by Sex") -->
-<!-- ``` -->
+<p>In this report, we highlight that there is a significant link between drug use and the impact on an individual’s mental health. Young people who take drugs are more likely to worry about their mental health, which is a cause for concern as drug use is often conducted in order to suppress mental health conditions, such as anxiety and depression. Young people who take drugs are also more likely to skip school do due mental health issues, which in turn will potentially affect their education in the short and long term. Students with zero absence are 10 times more likely to achieve the English Baccalaureate than those who miss 15%-20% of their school year. Despite these findings, it cannot be said for certain whether drug use <strong>causes</strong> issues that arise with mental health, it can only be claimed there is a link between the two variables.</p>
 
 
 </section>
