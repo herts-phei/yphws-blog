@@ -17,7 +17,7 @@ library(knitr)
 library(simplermarkdown)
 library(here)
 
-box::use(../../../phei_functions/hes)
+box::use(../../../../phei_functions/hes)
 
 source(here("R", "table.R"))
 source(here("R", "functions.R"))
@@ -129,6 +129,7 @@ summary <- tibble(education = "&#x2705;",
 
 print(kable(summary))
 ```
+
 : Summary Table of Aspirational Pathways
 
 Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students
@@ -191,140 +192,142 @@ tables_df_suppressed[["education"]] %>% pivot_longer(
                  legend.position = "bottom", axis.title.y = element_blank())
 ```
 
-### Job/career
+The plot above shows differences in the relative proportions of care-experienced and non care-experienced students' responses to pursuing education. A difference can be observed in the category of the responses through a visual glance. After performing a chi-squared test analysis, this difference is found to be statistically significant.
 
-::: {#tbl-panel-2 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["job"]]))
-```
+<!-- ### Job/career -->
 
-: Numbers (suppressed) {#tbl-first}
+<!-- ::: {#tbl-panel-2 layout-ncol="3"} -->
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed[["job"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["job"]]))
-```
+<!-- : Numbers (suppressed) {#tbl-first} -->
 
-: Percentages {#tbl-second}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed_proportions[["job"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(p_value_table("job")))
-```
+<!-- : Percentages {#tbl-second} -->
 
-: Results {#tbl-third}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(p_value_table("job"))) -->
+<!-- ``` -->
 
-Plan to get a job after leaving school
-:::
+<!-- : Results {#tbl-third} -->
 
-### Training
+<!-- Plan to get a job after leaving school -->
+<!-- ::: -->
 
-::: {#tbl-panel-3 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["training"]]))
-```
+<!-- ### Training -->
 
-: Numbers (suppressed) {#tbl-first}
+<!-- ::: {#tbl-panel-3 layout-ncol="3"} -->
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed[["training"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["training"]]))
-```
+<!-- : Numbers (suppressed) {#tbl-first} -->
 
-: Percentages {#tbl-second}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed_proportions[["training"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(p_value_table("training")))
-```
+<!-- : Percentages {#tbl-second} -->
 
-: Results {#tbl-third}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(p_value_table("training"))) -->
+<!-- ``` -->
 
-Plan to train for a skilled job after leaving school
-:::
+<!-- : Results {#tbl-third} -->
 
-### Family
+<!-- Plan to train for a skilled job after leaving school -->
+<!-- ::: -->
 
-::: {#tbl-panel-4 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["family"]]))
-```
+<!-- ### Family -->
 
-: Numbers (suppressed) {#tbl-first}
+<!-- ::: {#tbl-panel-4 layout-ncol="3"} -->
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed[["family"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["family"]]))
-```
+<!-- : Numbers (suppressed) {#tbl-first} -->
 
-: Percentages {#tbl-second}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed_proportions[["family"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(p_value_table("family")))
-```
+<!-- : Percentages {#tbl-second} -->
 
-: Results {#tbl-third}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(p_value_table("family"))) -->
+<!-- ``` -->
 
-Plan to start a family after leaving school
-:::
+<!-- : Results {#tbl-third} -->
 
-### Uncertain
+<!-- Plan to start a family after leaving school -->
+<!-- ::: -->
 
-::: {#tbl-panel-5 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["unsure"]]))
-```
+<!-- ### Uncertain -->
 
-: Numbers (suppressed) {#tbl-first}
+<!-- ::: {#tbl-panel-5 layout-ncol="3"} -->
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed[["unsure"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["unsure"]]))
-```
+<!-- : Numbers (suppressed) {#tbl-first} -->
 
-: Percentages {#tbl-second}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed_proportions[["unsure"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(p_value_table("unsure")))
-```
+<!-- : Percentages {#tbl-second} -->
 
-: Results {#tbl-third}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(p_value_table("unsure"))) -->
+<!-- ``` -->
 
-Aren't sure what they want to do after leaving school
-:::
+<!-- : Results {#tbl-third} -->
 
-### Other
+<!-- Aren't sure what they want to do after leaving school -->
+<!-- ::: -->
 
-::: {#tbl-panel-6 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["other"]]))
-```
+<!-- ### Other -->
 
-: Numbers (suppressed) {#tbl-first}
+<!-- ::: {#tbl-panel-6 layout-ncol="3"} -->
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed[["other"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["other"]]))
-```
+<!-- : Numbers (suppressed) {#tbl-first} -->
 
-: Percentages {#tbl-second}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(tables_df_suppressed_proportions[["other"]])) -->
+<!-- ``` -->
 
-```{r}
-#| output: asis
-print(kable(p_value_table("other")))
-```
+<!-- : Percentages {#tbl-second} -->
 
-: Results {#tbl-third}
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- print(kable(p_value_table("other"))) -->
+<!-- ``` -->
 
-Have other plans after leaving school
-:::
+<!-- : Results {#tbl-third} -->
+
+<!-- Have other plans after leaving school -->
+<!-- ::: -->
 
 ## Conclusions/implications
 

@@ -1,6 +1,6 @@
 ---
 title: "Do LGBQ+ YP have different aspirations for their future?"
-date: Sys.Date()
+date: "2023-07-17"
 categories: ['lgbtq+', 'aspirations', 'school leavers']
 format: html
 editor: visual
