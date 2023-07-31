@@ -1,0 +1,374 @@
+---
+title: 'Are young people who take drugs more likely to have mental health conditions?'
+date: '2023-07-20'
+categories: ['drugs', 'mental health']
+description: 'This analysis explores the link between drug use in young people and association with mental health conditions.'
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen = 999)
+
+box::use(../../../../phei_functions/hes)
+
+scientific_comma <- function(x){
+  prettyNum(x, big.mark = ",", scientific = F)
+}
+
+
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(stringr)
+library(epitools)
+library(knitr)
+```
+
+![](mental_health_service.jpg){width="363"}
+
+## **Abstract**
+
+Taking drugs have known effects on populations' mental health. With increasing numbers of young people seeking mental health support, this blogpost looks at how the impact of drugs may exacerbate the issue.
+
+<!-- ## **Descriptive Analysis** -->
+
+```{r}
+yphws_data_private <- readRDS("~/projects/yphws_analysis/data/private/yphws_data_private.Rds")
+
+
+data <- yphws_data_private %>% 
+    dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs",
+                              "No",
+                              "Yes")),
+                mental_accessed = ifelse(mental_accessed == "Yes", "Yes", "No")
+       #  mental_accessed = as.factor(mental_accessed)
+         )
+
+count <- data$drug_ever %>% table() %>% as_tibble() %>% rename("Answer" = ".")
+count$n <- round(count$n/5)*5
+
+count_binary_drugs <- data$drug_yes_no %>% table() %>% as_tibble() %>% rename("Answer" = ".")
+count_binary_drugs$n <- round(count_binary_drugs$n/5)*5
+
+count_binary_mental <- data$mental_accessed %>% table() %>% as_tibble() %>% rename("Answer" = ".")
+count_binary_mental$n <- round(count_binary_mental$n/5)*5
+
+drug_students <- round((count_binary_drugs %>% filter(Answer == "Yes") %>% pull(n))/5)*5
+total_students <- round(nrow(data)/5)*5
+drug_students_pct <- round((drug_students/total_students)*100, 2)
+
+mental_students <- round((count_binary_mental %>% filter(Answer == "Yes") %>% pull(n))/5)*5
+mental_students_pct <- round((mental_students/total_students)*100, 2)
+```
+
+To note, counts are rounded to the nearest five for disclosure purposes.
+
+In the data collected for the latest YPHWS cohort, `r scientific_comma(drug_students)` students out of a total of `r scientific_comma(total_students)` students claimed to have taken a drug at least once, representing `r drug_students_pct`% of the total respondents. `r scientific_comma(count$n[count$Answer == "I take drugs regularly (once a week or more)"])` students claimed to take drugs regularly, representing `r  scientific_comma(round((count$n[count$Answer == "I take drugs regularly (once a week or more)"]/total_students)*100, 2))`% of respondents.
+
+The table below highlights the types of drugs taken by students. To note, individuals may have claimed to have taken more than one type of drug:
+
+```{r}
+cols <- grep("_exp|mental_accessed|age|condition_mental|sex|District|life_satisfied", names(data))
+
+table <- data %>% 
+  dplyr::select(cols) %>% 
+  dplyr::select(-age, -sex, -mental_accessed, -sexuality, -condition_mental, -mental_accessed_helpful,
+                -internet_message, -life_satisfied,
+                -District, 
+                -District_school) %>% 
+  mutate_all(., ~ case_when(. == "Yes" ~ 1,
+                            . == "No" ~ 0,
+                            T ~ 0)) %>% 
+  summarise_all(., ~ sum(.)) %>% 
+  rename_all(., ~ gsub("\\_.*", "", .)) %>% 
+  pivot_longer(cols = everything(), names_to = "Drug", values_to = "Number of individuals who claimed to have taken drug") %>% 
+  mutate(Drug = str_to_title(Drug),
+         `Number of individuals who claimed to have taken drug` = round(`Number of individuals who claimed to have taken drug`/5)*5) %>% 
+  arrange(desc(`Number of individuals who claimed to have taken drug`))
+  #flextable::flextable() %>% 
+  #flextable::width(width = 8, unit = "cm")
+
+kable(table)
+```
+
+Focusing on mental health, `r scientific_comma(round(mental_students/5)*5)` students claimed to have received a diagnosis through mental health support, representing `r mental_students_pct` % of respondents.
+
+## **Methods**
+
+To investigate links between drug use and issues related to mental health, logistic regression is used. This is a form of regression analysis where the response variable is binary (i.e. Yes/No). From the logistic regression, we can evaluate what predictors have an effect on the outcome of the response variable, whilst we can also compare the predictability between explanatory variables using an odds ratio.
+
+In the following, we treat accessing mental health as the response variable, meaning only individuals who claim they categorically did or did not access mental health services are included in the analysis.
+
+In the following report we assess how drugs relate to:
+
+-   Worrying about mental health;
+-   Skipping school due to mental health;
+-   Needing mental health services;
+-   Having mental health conditions.
+
+The analysis does not confirm causation. Predictors can only be linked to response variables (particularly if they are significant). It cannot be said for certain whether the predictor causes the response.
+
+In some of the examples below, there are graphical representations of the logistic regression analysis and odds ratio outputs. In these graphs, there is a baseline group in which other groups are compared against (baselines are clarified in the examples), from which groups can be claimed to be more or less likely to have a certain characteristic (e.g. to have a mental health condition). Each group has an associated confidence interval, in which we can be 95% certain the real value lies in. Groups can be determined to be significantly different from one another if the intervals do not overlap, or the baseline group does not fall within the groups interval.
+
+A statistically significant relationship between the explanatory and response variables is outlined when the p-value is lower than the 0.05 threshold. In this case, the p-value is small enough to reject the null hypothesis of the conducted test, which is that there is no relationship between the variables.
+
+<!-- <br> -->
+
+<!-- <summary>More on logistic regression</summary> -->
+
+## **Results**
+
+```{r}
+
+n_drugs <- data %>% 
+  filter(!is.na(drug_ever)) %>% 
+  dplyr::mutate(drug_yes_no = ifelse(drug_ever == "I have never taken drugs",
+                              "no",
+                              "yes"))
+  
+
+model_data <- data %>%
+  dplyr::select(age, District, sex, drug_ever, worry_mental, imd_quintile, schyear, life_satisfied,
+                ethnicity) %>%
+  filter(!is.na(drug_ever),
+         !is.na(worry_mental)) %>%
+  dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs",
+                              "no",
+                              "yes")),
+                worry_mental = as.factor(ifelse(worry_mental == "Yes", "Yes", "No"))
+         )
+
+model_worry <- glm(data = model_data, worry_mental ~ drug_yes_no + sex + age, family = binomial)
+
+significance_worry <- ifelse(summary(model_worry)$coef[,4][2] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This association is not significant.")
+
+model_data <- data %>%
+  dplyr::select(age, District, sex, drug_ever,
+                skipschool_mentalhealth, imd_quintile, schyear,
+                life_satisfied) %>%
+  filter(!is.na(drug_ever),
+         !is.na(skipschool_mentalhealth)) %>%
+  dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs",
+                              "no",
+                              "yes")),
+                skipschool_mentalhealth = as.factor(ifelse(skipschool_mentalhealth == "Yes",
+                                                           "Yes",
+                                                           "No"))
+         )
+
+
+model_skip <- glm(data = model_data, skipschool_mentalhealth ~ drug_yes_no + sex + age, family = binomial)
+
+significance_skip <- ifelse(summary(model_skip)$coef[,4][2] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This predictor is not significant.")
+
+
+model_data <- data %>%
+  dplyr::select(age, District, sex, drug_ever, mental_accessed, imd_quintile, schyear, life_satisfied, ethnicity) %>%
+  filter(!is.na(drug_ever),
+         !is.na(mental_accessed),
+         mental_accessed %in% c("Yes", "No")) %>%
+  dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs",
+                              "no",
+                              "yes")),
+                mental_accessed = as.factor(ifelse(mental_accessed == "Yes",
+                                                   "Yes",
+                                                   "No"))
+         )
+
+
+model_access <- glm(data = model_data, mental_accessed ~ drug_yes_no + age + sex, family = binomial)
+
+significance_access <- ifelse(summary(model_access)$coef[,4][2] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This predictor is not significant.")
+
+
+ model_data <- data %>%
+  dplyr::select(age, District, sex, drug_ever, condition_mental, imd_quintile, schyear, life_satisfied,
+                mental_accessed) %>%
+  filter(!is.na(drug_ever),
+         !is.na(condition_mental)) %>%
+  dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs",
+                              "no",
+                              "yes")),
+                condition_mental = as.factor(ifelse(condition_mental == "Yes",
+                                                    "Yes",
+                                                    "No")
+                )
+         )
+
+
+model_condition <- glm(data = model_data, condition_mental ~ drug_yes_no, family = binomial)
+
+significance_condition <- ifelse(summary(model_condition)$coef[,4][2] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This predictor is not significant.")
+
+```
+
+A total of `r round((nrow(n_drugs[n_drugs$drug_yes_no == 'yes', ]))/5)*5` students in this analysis claimed to have taken drugs. After conducting a logistic regression analysis having controlled for sex and age, it was found that:
+
+-   Students who claimed to have taken drugs are **`r round(exp(coef(model_worry))[2], 2)` times** more likely to be worried about their mental health than students who did not take drugs. `r paste0(significance_worry)`
+
+-   Students who claimed to have taken drugs are **`r round(exp(coef(model_skip))[2], 2)` times** more likely to skip school due to mental health reasons than students who did not take drugs. `r paste0(significance_skip)`
+
+-   Students who claimed to have taken drugs are **`r round(exp(coef(model_access))[2], 2)` times** more likely to access mental health services than students who did not take drugs. `r paste0(significance_access)`
+
+-   Students who claimed to have taken drugs are **`r round(exp(coef(model_condition))[2], 2)` times** more likely to have a mental health condition than students who did not take drugs. `r paste0(significance_condition)`
+
+<br>
+
+### Is there an association between gender, drugs and mental health conditions?
+
+```{r}
+
+mental_condition_sex <- model_data %>%
+  filter(condition_mental %in% c("Yes", "No"),
+         sex %in% c("Male", "Female")
+      ) %>%
+  mutate(drug_yes_no = as.factor(ifelse(drug_yes_no == "yes",
+                                        "Drugs taken",
+                                        "Drugs not taken")),
+         condition_mental = ifelse(condition_mental == "Yes", 1, 0),
+         group = as.factor(paste0(drug_yes_no, " - ", sex)))
+
+mental_condition_sex$group <- relevel(mental_condition_sex$group, ref = "Drugs not taken - Male")
+
+model <- glm(data = mental_condition_sex, condition_mental ~ group, family = binomial)
+
+significance <- ifelse(summary(model)$coef[,4] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This predictor is not significant.")
+
+
+df <- as.data.frame(exp(coef(model))) %>%
+  rename(Coefficient =  "exp(coef(model))") %>%
+  mutate(Sex = rownames(.)) %>%
+  left_join(mutate(as.data.frame(exp(confint(model))), Sex = row.names(.))) %>%
+  mutate(Sex = gsub("group", "", Sex)) %>%
+  filter(Sex != "(Intercept)") %>%
+  rename(LCL = "2.5 %", UCL = "97.5 %")
+
+
+ggplot(df, aes(x = Coefficient, y = Sex)) +
+    geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
+    geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height =
+                     .2, color = "gray50") +
+    geom_point(size = 3.5, color = "#2c3e50") +
+    theme_bw()+
+    theme(panel.grid.minor = element_blank()) +
+    ylab("Gender") +
+    xlab("Odds ratio") +
+    labs(title = "Mental health conditions having taken drugs by gender",
+         subtitle = "Baseline group: Males who have not taken drugs")
+```
+
+Compared to the baseline of males who have not taken drugs, males who have taken drugs are **`r round(df$Coefficient[df$Sex== "Drugs taken - Male"], 2)` times** more likely to have a mental health condition. Among those who have claimed to have taken drugs, females are **`r round((df$Coefficient[df$Sex== "Drugs taken - Female"]/df$Coefficient[df$Sex== "Drugs taken - Male"]),2)` times** more likely than males to have a mental health condition, a significant difference. Females who have taken drugs are **`r round((df$Coefficient[df$Sex== "Drugs taken - Female"]/df$Coefficient[df$Sex== "Drugs not taken - Female"]),2)` times** more likely to have a mental health condition than males who have not taken drugs.
+
+<br>
+
+### Is there an association between deprivation and mental health conditions?
+
+```{r}
+
+mental_condition_imd <- model_data %>%
+  filter(condition_mental %in% c("Yes", "No"),
+         drug_yes_no == "yes",
+         imd_quintile != "unknown") %>%
+  mutate(condition_mental = factor(condition_mental, levels = c("Yes", "No")))
+
+model <- glm(data = mental_condition_imd, condition_mental ~ imd_quintile, family = binomial)
+
+significance <- ifelse(summary(model)$coef[,4][2] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This predictor is not significant.")
+
+df <- as.data.frame(exp(coef(model))) %>%
+  rename(Coefficient =  "exp(coef(model))") %>%
+  mutate(IMD = rownames(.)) %>%
+  left_join(mutate(as.data.frame(exp(confint(model))), IMD = row.names(.))) %>%
+  mutate(IMD = gsub("imd_quintile", "", IMD)) %>%
+  filter(IMD != "(Intercept)") %>%
+  rename(LCL = "2.5 %", UCL = "97.5 %")
+
+ggplot(df, aes(x = Coefficient, y = IMD)) +
+    geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
+    geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height =
+                     .2, color = "gray50") +
+    geom_point(size = 3.5, color = "#2c3e50") +
+    theme_bw()+
+    theme(panel.grid.minor = element_blank()) +
+    ylab("IMD") +
+    xlab("Odds ratio") +
+  labs(title = "Mental health conditions having taken drugs by IMD quintile",
+       subtitle = "Baseline group: IMD quintile 1")
+
+
+```
+
+For individuals who have claimed to have taken drugs, the likelihood of having a mental health condition is lowest for those residing in IMD quintile 2 (most deprived). However, the differences between each quintile are not significant.
+
+<br>
+
+### Is there an association between district of residence and mental health conditions?
+
+```{r}
+
+mental_condition_district <- model_data %>%
+  filter(condition_mental %in% c("Yes", "No"),
+         drug_yes_no == "yes",
+         District != "Prefer not to say / Unknown",
+         District != "Outside of Hertfordshire") %>%
+  mutate(condition_mental = factor(condition_mental, levels = c("Yes", "No")),
+         # District = factor(District, levels = c("Stevenage", "Broxbourne",
+         #                                        "Dacorum", "East Hertfordshire",
+         #                                        "Hertsmere",
+         #                                        "North Hertfordshire", "St Albans",
+         #                                        "Three Rivers", "Watford",
+         #                                          "Welwyn Hatfield" ))
+         )
+
+model <- glm(data = mental_condition_district, condition_mental ~ District, family = binomial)
+
+significance <- ifelse(summary(model)$coef[,4][2] <= 0.05,
+                      "This association is significant (p-value < 0.05).",
+                      "This predictor is not significant.")
+
+df <- as.data.frame(exp(coef(model))) %>%
+  rename(Coefficient =  "exp(coef(model))") %>%
+  mutate(District = rownames(.)) %>%
+  left_join(mutate(as.data.frame(exp(confint(model))), District = row.names(.))) %>%
+  mutate(District = gsub("District", "", District)) %>%
+  filter(District != "(Intercept)") %>%
+  rename(LCL = "2.5 %", UCL = "97.5 %")
+
+ggplot(df, aes(x = Coefficient, y = District)) +
+    geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
+    geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height =
+                     .2, color = "gray50") +
+    geom_point(size = 3.5, color = "#2c3e50") +
+    theme_bw()+
+    theme(panel.grid.minor = element_blank()) +
+    ylab("District") +
+    xlab("Odds ratio") +
+  labs(title = "Mental health conditions having taken drugs by district",
+       subtitle = "Baseline group: Broxbourne")
+
+
+```
+
+For individuals who have claimed to have taken drugs, the likelihood of having mental health condition is lowest for those residing in East Hertfordshire. However, the differences between each district are not significant.
+
+## **Conclusions/implications**
+
+In this report, we highlight that there is a significant link between drug use and an individual's mental health. Young people who take drugs are more likely to worry about their mental health. This is a cause for concern as drug use is often conducted in order to suppress mental health conditions, such as anxiety and depression. Young people who take drugs are also more likely to skip school due to mental health issues, which in turn will potentially affect their education in the short and long term. Students with zero absence are 10 times more likely to achieve the English Baccalaureate than those who miss 15%-20% of their school year. Despite these findings, it cannot be said for certain whether drug use **causes** issues that arise with mental health, it can only be claimed there is a link between the two variables.
