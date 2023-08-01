@@ -355,4 +355,141 @@ A p.value of less than 0.05 indicates statistical significance, and that there i
 
 A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
 
+The below shows tables for the non-significant pathways.
+
+### Job/career
+
+::: {#tbl-panel-2 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["job"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["job"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("job")))
+```
+
+: Results {#tbl-third}
+
+Plan to get a job after leaving school
+:::
+
+### Training
+
+::: {#tbl-panel-3 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["training"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["training"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("training")))
+```
+
+: Results {#tbl-third}
+
+Plan to train for a skilled job after leaving school
+:::
+
+### Family
+
+::: {#tbl-panel-4 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["family"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["family"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("family")))
+```
+
+: Results {#tbl-third}
+
+Plan to start a family after leaving school
+:::
+
+### Uncertain
+
+::: {#tbl-panel-5 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["unsure"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["unsure"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("unsure")))
+```
+
+: Results {#tbl-third}
+
+Aren't sure what they want to do after leaving school
+:::
+
+### Other
+
+::: {#tbl-panel-6 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["other"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["other"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("other")))
+```
+
+: Results {#tbl-third}
+
+Have other plans after leaving school
+:::
+
 </details>
