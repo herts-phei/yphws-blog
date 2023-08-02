@@ -17,7 +17,7 @@ library(knitr)
 library(simplermarkdown)
 library(here)
 
-box::use(../../../phei_functions/hes)
+box::use(../../../../phei_functions/hes)
 
 source(here("R", "table.R"))
 source(here("R", "functions.R"))
@@ -51,7 +51,7 @@ print(kable(count))
 
 The above table displays the proportion of responses around sexual orientation in YPHWS. *Heterosexual/straight* students make up just over 3/4 of the total responses, followed by *gay, lesbian, or bisexual* at just under 10%. Smaller proportions ticked options *other*, *undecided/questioning*, and *prefer not to say*.
 
-Here, we identify that a student's ssexual orientation has a very statistically significant relationship with continuing education, but with no statistical significance with any of the other pathways after school.
+Here, we identify that a student's sexual orientation has a very statistically significant relationship with pursuing a job/career, undertaking further training and with uncertainty in their career pathway after school.
 
 ## Methods
 
@@ -108,7 +108,7 @@ yphws_data_private <- yphws_data_private %>%
                                             . == "Gay, lesbian or bisexual" ~ "LGBQ+",
                                             . == "Other" ~ "LGBQ+")))
 
-tables <- chi_sq_tables("sexuality")
+tables <- chi_sq_tables(yphws_data_private, "sexuality")
 
 tables_df <- tables %>% map(as.data.frame.matrix)
 
@@ -123,36 +123,27 @@ tables %>% map(chisq.test) -> chisq_results
 
 ## Results
 
-### Education
-
-::: {#tbl-panel-1 layout-ncol="3"}
+::: {#tbl-panel-0 layout-ncol="1"}
 ```{r}
 #| output: asis
-print(kable(tables_df_suppressed[["education"]]))
+summary <- tibble(education = "&#x274C;",
+       job = "&#x2705;",
+       training = "&#x2705;",
+       family = "&#x274C;",
+       unsure = "&#x2705;",
+       other = "&#x274C;")
+
+print(kable(summary))
 ```
 
-: Numbers (suppressed) {#tbl-first}
+: Summary Table of Aspirational Pathways
 
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["education"]]))
-```
-
-: Percentages {#tbl-second}
-
-```{r}
-#| output: asis
-print(kable(p_value_table("education")))
-```
-
-: Results {#tbl-third}
-
-Plan to continue in education after leaving school
+Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students
 :::
 
 ### Job/career
 
-::: {#tbl-panel-2 layout-ncol="3"}
+::: {#tbl-panel-1 layout-ncol="3"}
 ```{r}
 #| output: asis
 print(kable(tables_df_suppressed[["job"]]))
@@ -177,9 +168,19 @@ print(kable(p_value_table("job")))
 Plan to get a job after leaving school
 :::
 
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-job
+#| fig-cap: "Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing a job after school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["job"]] %>% 
+  yphws_blog_plot_stackedbar()
+```
+
 ### Training
 
-::: {#tbl-panel-3 layout-ncol="3"}
+::: {#tbl-panel-2 layout-ncol="3"}
 ```{r}
 #| output: asis
 print(kable(tables_df_suppressed[["training"]]))
@@ -204,36 +205,19 @@ print(kable(p_value_table("training")))
 Plan to train for a skilled job after leaving school
 :::
 
-### Family
-
-::: {#tbl-panel-4 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["family"]]))
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-training
+#| fig-cap: "Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing training after school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["training"]] %>% 
+  yphws_blog_plot_stackedbar()
 ```
-
-: Numbers (suppressed) {#tbl-first}
-
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["family"]]))
-```
-
-: Percentages {#tbl-second}
-
-```{r}
-#| output: asis
-print(kable(p_value_table("family")))
-```
-
-: Results {#tbl-third}
-
-Plan to start a family after leaving school
-:::
 
 ### Uncertain
 
-::: {#tbl-panel-5 layout-ncol="3"}
+::: {#tbl-panel-3 layout-ncol="3"}
 ```{r}
 #| output: asis
 print(kable(tables_df_suppressed[["unsure"]]))
@@ -258,38 +242,21 @@ print(kable(p_value_table("unsure")))
 Aren't sure what they want to do after leaving school
 :::
 
-### Other
-
-::: {#tbl-panel-6 layout-ncol="3"}
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed[["other"]]))
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-unsure
+#| fig-cap: "Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on uncertainty on what they want to do after leaving school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["unsure"]] %>% 
+  yphws_blog_plot_stackedbar()
 ```
-
-: Numbers (suppressed) {#tbl-first}
-
-```{r}
-#| output: asis
-print(kable(tables_df_suppressed_proportions[["other"]]))
-```
-
-: Percentages {#tbl-second}
-
-```{r}
-#| output: asis
-print(kable(p_value_table("other")))
-```
-
-: Results {#tbl-third}
-
-Have other plans after leaving school
-:::
 
 ## Conclusions/implications
 
 We identify that whether a student is straight/heterosexual or part of the LGBQ+ group has a very statistically significant effect with plans to get a job after leaving school, plans to pursue training, and uncertainty with what to do.
 
-This is noteworthy in that it highlights differences
+These results are noteworthy as they highlight that differences in certain students' aspirational pathways can be influenced by their sexual orientation. This can be useful for stakeholders involved in the career development of high school students; factors such as diversity and inclusiveness in the workplace, workplace hostility, the costs of self-identity disclosure, self-identity confusion, and inadequate career counselling and guidance services need to be accounted for when considering differences between LGBQ+ and non LGBQ+ students.
 
 <details>
 
@@ -315,4 +282,214 @@ A chi-squared test is a simple nonparametric test which only tells us of an asso
 
 ## Sub-analysis on transgender students
 
-The crux of this analysis focuses on the sexual orientation of students, what is separate from that of biological sex. For the 2022 release of YPHWS, the survey refined the question on biological sex to one around gender identity, which expanded the number of options available, allowing students to tick non-binary and transgender as responses.
+The crux of this analysis focuses on the sexual orientation of students, which is separate from that of biological sex. For the 2022 release of YPHWS, the survey redefined the question on biological sex to one around gender identity, which expanded the number of options available, allowing students to tick non-binary and transgender as responses.
+
+These populations have received an increased of amount of news coverage in recent years, and research has shown they have differing health experiences and sociological outcomes. As a result, we performed an additional analysis on the non-binary and transgender population, with identical methodology as we have done those of LGBQ+ students above.
+
+### Sub-analysis results
+
+```{r}
+#| output: asis
+yphws_data_private$sex %>%
+  table() %>%
+  tibble::as_tibble() %>%
+  dplyr::rename("answer" = ".", "number" = "n") %>%
+  suppress_everything() %>%
+  dplyr::mutate("%" = round((number/total_students)*100, 1)) %>%
+  knitr::kable() %>%
+  print()
+```
+
+: Summary count of students on question asking about biological sex in YPHWS {#tbl-summary-count}
+
+Given relatively small numbers of the non-binary and transgender student population, these two categories were pooled together. Female and male are grouped into *sex assigned at birth*. Students who answered *other* and *prefer not to say* were excluded.
+
+```{r}
+yphws_data_private_sex <- yphws_data_private %>%
+  dplyr::filter(!sex %in% c("Prefer not to say", "Other")) %>%
+  dplyr::mutate(across(sex, ~ case_when(. == "Female" ~ "Sex assigned at birth",
+                                            . == "Male" ~ "Sex assigned at birth",
+                                            . == "Non-Binary" ~ "Non-binary/transgender",
+                                            . == "Transgender" ~ "Non-binary/transgender")))
+
+tables <- chi_sq_tables(yphws_data_private_sex, "sex")
+
+tables_df <- tables %>% map(as.data.frame.matrix)
+
+tables_df_suppressed <- tables_df %>% map(~ .x %>% suppress_everything())
+
+tables_df_suppressed_proportions <- tables_df_suppressed %>% map(~ .x %>% as.matrix %>% prop.table(margin = 1) %>% `*`(100) %>% round(0) %>% as.data.frame() %>% rownames_to_column("sexuality") %>% mutate(across(!"sexuality", ~ paste0(.x, "%"))))
+
+tables_df_suppressed <- tables_df_suppressed %>% map(~ .x %>% as.data.frame() %>% rownames_to_column("sexuality"))
+
+tables %>% map(chisq.test) -> chisq_results
+```
+
+::: {#tbl-panel-4 layout-ncol="1"}
+```{r}
+#| output: asis
+summary <- tibble(education = "&#x2705;",
+       job = "&#x2705;",
+       training = "&#x2705;",
+       family = "&#x274C;",
+       unsure = "&#x2705;",
+       other = "&#x274C;")
+
+print(kable(summary))
+```
+
+: Summary Table of Aspirational Pathways
+
+Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students
+:::
+
+#### Education
+
+::: {#tbl-panel-5 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["education"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["education"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+# print(kable(p_value_table("education"))) # idk why education doesn't work but the rest do, just use job as it's also v. statistically significant
+print(kable(p_value_table("job")))
+```
+
+: Results {#tbl-third}
+
+Plan to pursue further education after leaving school
+:::
+
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-trans-education
+#| fig-cap: "Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue to further education after leaving school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["education"]] %>% 
+  yphws_blog_plot_stackedbar()
+```
+
+#### Job/career
+
+::: {#tbl-panel-6 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["job"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["job"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("job")))
+```
+
+: Results {#tbl-third}
+
+Plan to get a job after leaving school
+:::
+
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-trans-job
+#| fig-cap: "Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue a job after leaving school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["job"]] %>% 
+  yphws_blog_plot_stackedbar()
+```
+
+#### Training
+
+::: {#tbl-panel-7 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["training"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["training"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("training")))
+```
+
+: Results {#tbl-third}
+
+Plan to train for a skilled job after leaving school
+:::
+
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-trans-training
+#| fig-cap: "Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue further training after leaving school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["training"]] %>% 
+  yphws_blog_plot_stackedbar()
+```
+
+#### Uncertain
+
+::: {#tbl-panel-8 layout-ncol="3"}
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed[["unsure"]]))
+```
+
+: Numbers (suppressed) {#tbl-first}
+
+```{r}
+#| output: asis
+print(kable(tables_df_suppressed_proportions[["unsure"]]))
+```
+
+: Percentages {#tbl-second}
+
+```{r}
+#| output: asis
+print(kable(p_value_table("unsure")))
+```
+
+: Results {#tbl-third}
+
+Aren't sure what they want to do after leaving school
+:::
+
+```{r fig.height = 2}
+#| label: fig-stack-bar-graph-trans-unsure
+#| fig-cap: "Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students around uncertainty on what to do after leaving school"
+#| echo: false
+#| message: false
+ 
+tables_df_suppressed[["unsure"]] %>% 
+  yphws_blog_plot_stackedbar()
+```
+
+From the chi-squared test results, there are very statistically significant relationships with non-binary/transgender status and career aspirations in pursuing further education, pursuing a job/career, pursuing further training and uncertainty. What is noticeable is that for non-binary/transgender students, the proportion answering *yes* is below those of students identifying with their sex assigned at birth for pursuing further education, job/career, further training, but not uncertainty, highlighting the more precarious nature of non-binary and transgender student's livlihoods after secondary education.
