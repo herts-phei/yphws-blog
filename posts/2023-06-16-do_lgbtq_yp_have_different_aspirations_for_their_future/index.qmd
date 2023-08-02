@@ -8,7 +8,7 @@ image: "rainbow_lanyard.jpg"
 ---
 
 ```{r include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE, echo = FALSE)
 
 library(dplyr)
 library(purrr)
@@ -363,7 +363,7 @@ print(kable(tables_df_suppressed_proportions[["education"]]))
 ```{r}
 #| output: asis
 # print(kable(p_value_table("education"))) # idk why education doesn't work but the rest do, just use job as it's also v. statistically significant
-print(kable(p_value_table("job")))
+print(kable(p_value_table("education")))
 ```
 
 : Results {#tbl-third}
