@@ -1,6 +1,6 @@
 ---
 title: 'Are young people who take drugs more likely to have mental health conditions?'
-date: "`r Sys.Date()`"
+date: '2023-07-20'
 categories: ['drugs', 'mental health']
 description: 'This analysis explores the link between drug use in young people and association with mental health conditions.'
 execute: 
@@ -13,7 +13,6 @@ editor_options:
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 options(scipen = 999)
-
 
 scientific_comma <- function(x){
   prettyNum(x, big.mark = ",", scientific = F)
@@ -230,12 +229,9 @@ A total of `r round((nrow(n_drugs[n_drugs$drug_yes_no == 'yes', ]))/5)*5` studen
 
 - Year 10 students who claimed to have taken drugs are **significantly more likely** to access mental health services compared to year 9 students.
 
-
 <br>
 
-
 ### Is there an association between gender, drugs and mental health conditions?
-
 
 ```{r}
 
@@ -280,13 +276,11 @@ ggplot(df, aes(x = Coefficient, y = Sex)) +
          subtitle = "Baseline group: Males who have not taken drugs")
 ```
 
-
 Compared to the baseline of males who have not taken drugs, males who have taken drugs are **`r round(df$Coefficient[df$Sex== "Drugs taken - Male"], 2)` times** more likely to have a mental health condition. Among those who have claimed to have taken drugs, females are **`r round((df$Coefficient[df$Sex== "Drugs taken - Female"]/df$Coefficient[df$Sex== "Drugs taken - Male"]),2)` times** more likely than males to have a mental health condition, a significant difference. Females who have taken drugs are **`r round((df$Coefficient[df$Sex== "Drugs taken - Female"]/df$Coefficient[df$Sex== "Drugs not taken - Female"]),2)` times** more likely to have a mental health condition than males who have not taken drugs.
 
 <br>
 
 ### Is there an association between deprivation and mental health conditions?
-
 
 ```{r}
 
@@ -330,7 +324,6 @@ For individuals who have claimed to have taken drugs, the likelihood of having a
 <br>
 
 ### Is there an association between district of residence and mental health conditions?
-
 
 ```{r}
 
@@ -376,7 +369,6 @@ ggplot(df, aes(x = Coefficient, y = District)) +
 
 
 ```
-
 
 For individuals who have claimed to have taken drugs, the likelihood of having mental health condition is lowest for those residing in East Hertfordshire. However, the differences between each district are not significant.
 
