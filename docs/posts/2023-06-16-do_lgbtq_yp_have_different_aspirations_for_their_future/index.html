@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hertfordshire Public Health Evidence and Intelligence">
+<meta name="dcterms.date" content="2023-07-17">
 
 <title>YPHWS Spotlight Analysis - Do LGBQ+ YP have different aspirations for their future?</title>
 <style>
@@ -99,6 +100,10 @@ ga('send', {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Blogposts</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
@@ -138,7 +143,7 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">Invalid Date</p>
+        <p class="date">July 17, 2023</p>
       </div>
     </div>
     
@@ -157,15 +162,15 @@ ga('send', {
   <li><a href="#methods" id="toc-methods" class="nav-link active" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
   <li><a href="#jobcareer" id="toc-jobcareer" class="nav-link" data-scroll-target="#jobcareer">Job/career</a></li>
   <li><a href="#training" id="toc-training" class="nav-link" data-scroll-target="#training">Training</a></li>
-  <li><a href="#family" id="toc-family" class="nav-link" data-scroll-target="#family">Family</a></li>
   <li><a href="#uncertain" id="toc-uncertain" class="nav-link" data-scroll-target="#uncertain">Uncertain</a></li>
-  <li><a href="#other" id="toc-other" class="nav-link" data-scroll-target="#other">Other</a></li>
   </ul></li>
   <li><a href="#conclusionsimplications" id="toc-conclusionsimplications" class="nav-link" data-scroll-target="#conclusionsimplications">Conclusions/implications</a></li>
-  <li><a href="#sub-analysis-on-transgender-students" id="toc-sub-analysis-on-transgender-students" class="nav-link" data-scroll-target="#sub-analysis-on-transgender-students">Sub-analysis on transgender students</a></li>
+  <li><a href="#sub-analysis-on-transgender-students" id="toc-sub-analysis-on-transgender-students" class="nav-link" data-scroll-target="#sub-analysis-on-transgender-students">Sub-analysis on transgender students</a>
+  <ul class="collapse">
+  <li><a href="#sub-analysis-results" id="toc-sub-analysis-results" class="nav-link" data-scroll-target="#sub-analysis-results">Sub-analysis results</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -221,7 +226,7 @@ ga('send', {
 </table>
 </div>
 <p>The above table displays the proportion of responses around sexual orientation in YPHWS. <em>Heterosexual/straight</em> students make up just over 3/4 of the total responses, followed by <em>gay, lesbian, or bisexual</em> at just under 10%. Smaller proportions ticked options <em>other</em>, <em>undecided/questioning</em>, and <em>prefer not to say</em>.</p>
-<p>Here, we identify that a student’s ssexual orientation has a very statistically significant relationship with continuing education, but with no statistical significance with any of the other pathways after school.</p>
+<p>Here, we identify that a student’s sexual orientation has a very statistically significant relationship with pursuing a job/career, undertaking further training and with uncertainty in their career pathway after school.</p>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
@@ -294,93 +299,46 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<section id="education" class="level3">
-<h3 class="anchored" data-anchor-id="education">Education</h3>
-<div id="tbl-panel-1" class="tbl-parent quarto-layout-panel anchored">
+<div id="tbl-panel-0" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;2: Plan to continue in education after leaving school</p>
+<p>Table&nbsp;2: Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-panel-0-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-0" style="flex-basis: 100.0%;justify-content: center;">
 <table class="table">
-<caption>(a) Numbers (suppressed)</caption>
+<caption>(a) Summary Table of Aspirational Pathways</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">sexuality</th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
+<th style="text-align: left;">education</th>
+<th style="text-align: left;">job</th>
+<th style="text-align: left;">training</th>
+<th style="text-align: left;">family</th>
+<th style="text-align: left;">unsure</th>
+<th style="text-align: left;">other</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: right;">1875</td>
-<td style="text-align: right;">520</td>
-<td style="text-align: right;">5235</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LGBQ+</td>
-<td style="text-align: right;">475</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">1220</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(b) Percentages</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">sexuality</th>
-<th style="text-align: left;">Maybe</th>
-<th style="text-align: left;">No</th>
-<th style="text-align: left;">Yes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: left;">25%</td>
-<td style="text-align: left;">7%</td>
-<td style="text-align: left;">69%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LGBQ+</td>
-<td style="text-align: left;">26%</td>
-<td style="text-align: left;">6%</td>
-<td style="text-align: left;">68%</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(c) Results</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Significance</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">not statistically significant</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-</section>
 <section id="jobcareer" class="level3">
 <h3 class="anchored" data-anchor-id="jobcareer">Job/career</h3>
-<div id="tbl-panel-2" class="tbl-parent quarto-layout-panel anchored">
+<div id="tbl-panel-1" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p>Table&nbsp;3: Plan to get a job after leaving school</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
@@ -407,7 +365,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(b) Percentages</caption>
 <thead>
@@ -434,7 +392,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </tbody>
 </table>
 </div>
-<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-1" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(c) Results</caption>
 <thead>
@@ -451,15 +409,30 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`.
+ℹ See also `vignette("ggplot2-in-packages")` for more information.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-job" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-job-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing a job after school</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="training" class="level3">
 <h3 class="anchored" data-anchor-id="training">Training</h3>
-<div id="tbl-panel-3" class="tbl-parent quarto-layout-panel anchored">
+<div id="tbl-panel-2" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p>Table&nbsp;4: Plan to train for a skilled job after leaving school</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
@@ -486,7 +459,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(b) Percentages</caption>
 <thead>
@@ -513,7 +486,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </tbody>
 </table>
 </div>
-<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-2" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(c) Results</caption>
 <thead>
@@ -530,94 +503,25 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </div>
 </div>
 </div>
-</section>
-<section id="family" class="level3">
-<h3 class="anchored" data-anchor-id="family">Family</h3>
-<div id="tbl-panel-4" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p>Table&nbsp;5: Plan to start a family after leaving school</p>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-4" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(a) Numbers (suppressed)</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">sexuality</th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: right;">2420</td>
-<td style="text-align: right;">2940</td>
-<td style="text-align: right;">1320</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LGBQ+</td>
-<td style="text-align: right;">590</td>
-<td style="text-align: right;">705</td>
-<td style="text-align: right;">330</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-4" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(b) Percentages</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">sexuality</th>
-<th style="text-align: left;">Maybe</th>
-<th style="text-align: left;">No</th>
-<th style="text-align: left;">Yes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: left;">36%</td>
-<td style="text-align: left;">44%</td>
-<td style="text-align: left;">20%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LGBQ+</td>
-<td style="text-align: left;">36%</td>
-<td style="text-align: left;">43%</td>
-<td style="text-align: left;">20%</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-4" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(c) Results</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Significance</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">not statistically significant</td>
-</tr>
-</tbody>
-</table>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-training" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-training-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing training after school</figcaption><p></p>
+</figure>
 </div>
 </div>
 </div>
 </section>
 <section id="uncertain" class="level3">
 <h3 class="anchored" data-anchor-id="uncertain">Uncertain</h3>
-<div id="tbl-panel-5" class="tbl-parent quarto-layout-panel anchored">
+<div id="tbl-panel-3" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
-<p>Table&nbsp;6: Aren’t sure what they want to do after leaving school</p>
+<p>Table&nbsp;5: Aren’t sure what they want to do after leaving school</p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(a) Numbers (suppressed)</caption>
 <thead>
@@ -644,7 +548,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </tbody>
 </table>
 </div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(b) Percentages</caption>
 <thead>
@@ -671,7 +575,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </tbody>
 </table>
 </div>
-<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-3" style="flex-basis: 33.3%;justify-content: center;">
 <table class="table">
 <caption>(c) Results</caption>
 <thead>
@@ -688,82 +592,13 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </div>
 </div>
 </div>
-</section>
-<section id="other" class="level3">
-<h3 class="anchored" data-anchor-id="other">Other</h3>
-<div id="tbl-panel-6" class="tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p>Table&nbsp;7: Have other plans after leaving school</p>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(a) Numbers (suppressed)</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">sexuality</th>
-<th style="text-align: right;">Maybe</th>
-<th style="text-align: right;">No</th>
-<th style="text-align: right;">Yes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: right;">2420</td>
-<td style="text-align: right;">2940</td>
-<td style="text-align: right;">1320</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LGBQ+</td>
-<td style="text-align: right;">590</td>
-<td style="text-align: right;">705</td>
-<td style="text-align: right;">330</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(b) Percentages</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">sexuality</th>
-<th style="text-align: left;">Maybe</th>
-<th style="text-align: left;">No</th>
-<th style="text-align: left;">Yes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: left;">36%</td>
-<td style="text-align: left;">44%</td>
-<td style="text-align: left;">20%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">LGBQ+</td>
-<td style="text-align: left;">36%</td>
-<td style="text-align: left;">43%</td>
-<td style="text-align: left;">20%</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
-<table class="table">
-<caption>(c) Results</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Significance</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">not statistically significant</td>
-</tr>
-</tbody>
-</table>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-unsure" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-unsure-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on uncertainty on what they want to do after leaving school</figcaption><p></p>
+</figure>
 </div>
 </div>
 </div>
@@ -772,7 +607,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 <section id="conclusionsimplications" class="level2">
 <h2 class="anchored" data-anchor-id="conclusionsimplications">Conclusions/implications</h2>
 <p>We identify that whether a student is straight/heterosexual or part of the LGBQ+ group has a very statistically significant effect with plans to get a job after leaving school, plans to pursue training, and uncertainty with what to do.</p>
-<p>This is noteworthy in that it highlights differences</p>
+<p>These results are noteworthy as they highlight that differences in certain students’ aspirational pathways can be influenced by their sexual orientation. This can be useful for stakeholders involved in the career development of high school students; factors such as diversity and inclusiveness in the workplace, workplace hostility, the costs of self-identity disclosure, self-identity confusion, and inadequate career counselling and guidance services need to be accounted for when considering differences between LGBQ+ and non LGBQ+ students.</p>
 <details>
 <summary>
 More on the results
@@ -827,9 +662,450 @@ More on the results
 </section>
 <section id="sub-analysis-on-transgender-students" class="level2">
 <h2 class="anchored" data-anchor-id="sub-analysis-on-transgender-students">Sub-analysis on transgender students</h2>
-<p>The crux of this analysis focuses on the sexual orientation of students, what is separate from that of biological sex. For the 2022 release of YPHWS, the survey refined the question on biological sex to one around gender identity, which expanded the number of options available, allowing students to tick non-binary and transgender as responses.</p>
+<p>The crux of this analysis focuses on the sexual orientation of students, which is separate from that of biological sex. For the 2022 release of YPHWS, the survey redefined the question on biological sex to one around gender identity, which expanded the number of options available, allowing students to tick non-binary and transgender as responses.</p>
+<p>These populations have received an increased of amount of news coverage in recent years, and research has shown they have differing health experiences and sociological outcomes. As a result, we performed an additional analysis on the non-binary and transgender population, with identical methodology as we have done those of LGBQ+ students above.</p>
+<section id="sub-analysis-results" class="level3">
+<h3 class="anchored" data-anchor-id="sub-analysis-results">Sub-analysis results</h3>
+<div id="tbl-summary-count" class="anchored">
+<table class="table">
+<caption>Table&nbsp;6: Summary count of students on question asking about biological sex in YPHWS</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">answer</th>
+<th style="text-align: right;">number</th>
+<th style="text-align: right;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">5415</td>
+<td style="text-align: right;">48.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">4490</td>
+<td style="text-align: right;">40.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Non-Binary</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Other</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">0.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prefer not to say</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Transgender</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">1.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Given relatively small numbers of the non-binary and transgender student population, these two categories were pooled together. Female and male are grouped into <em>sex assigned at birth</em>. Students who answered <em>other</em> and <em>prefer not to say</em> were excluded.</p>
+<div class="cell">
+
+</div>
+<div id="tbl-panel-4" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;7: Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-panel-4-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-4" style="flex-basis: 100.0%;justify-content: center;">
+<table class="table">
+<caption>(a) Summary Table of Aspirational Pathways</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">education</th>
+<th style="text-align: left;">job</th>
+<th style="text-align: left;">training</th>
+<th style="text-align: left;">family</th>
+<th style="text-align: left;">unsure</th>
+<th style="text-align: left;">other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;">✅</td>
+<td style="text-align: left;">❌</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="education" class="level4">
+<h4 class="anchored" data-anchor-id="education">Education</h4>
+<div id="tbl-panel-5" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;8: Plan to pursue further education after leaving school</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(a) Numbers (suppressed)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: right;">Maybe</th>
+<th style="text-align: right;">No</th>
+<th style="text-align: right;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">155</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: right;">2235</td>
+<td style="text-align: right;">580</td>
+<td style="text-align: right;">6185</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(b) Percentages</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: left;">27%</td>
+<td style="text-align: left;">10%</td>
+<td style="text-align: left;">63%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: left;">25%</td>
+<td style="text-align: left;">6%</td>
+<td style="text-align: left;">69%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-5" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(c) Results</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">very statistically significant</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-trans-education" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-trans-education-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue to further education after leaving school</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="jobcareer-1" class="level4">
+<h4 class="anchored" data-anchor-id="jobcareer-1">Job/career</h4>
+<div id="tbl-panel-6" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;9: Plan to get a job after leaving school</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(a) Numbers (suppressed)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: right;">Maybe</th>
+<th style="text-align: right;">No</th>
+<th style="text-align: right;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: right;">2565</td>
+<td style="text-align: right;">725</td>
+<td style="text-align: right;">5485</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(b) Percentages</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: left;">38%</td>
+<td style="text-align: left;">11%</td>
+<td style="text-align: left;">51%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: left;">29%</td>
+<td style="text-align: left;">8%</td>
+<td style="text-align: left;">63%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-6" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(c) Results</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">very statistically significant</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-trans-job" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-trans-job-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue a job after leaving school</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="training-1" class="level4">
+<h4 class="anchored" data-anchor-id="training-1">Training</h4>
+<div id="tbl-panel-7" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;10: Plan to train for a skilled job after leaving school</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-7" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(a) Numbers (suppressed)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: right;">Maybe</th>
+<th style="text-align: right;">No</th>
+<th style="text-align: right;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: right;">3645</td>
+<td style="text-align: right;">1955</td>
+<td style="text-align: right;">2880</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-7" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(b) Percentages</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: left;">43%</td>
+<td style="text-align: left;">35%</td>
+<td style="text-align: left;">22%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: left;">43%</td>
+<td style="text-align: left;">23%</td>
+<td style="text-align: left;">34%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-7" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(c) Results</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">very statistically significant</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-trans-training" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-trans-training-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue further training after leaving school</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="uncertain-1" class="level4">
+<h4 class="anchored" data-anchor-id="uncertain-1">Uncertain</h4>
+<div id="tbl-panel-8" class="tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;11: Aren’t sure what they want to do after leaving school</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-first" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-8" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(a) Numbers (suppressed)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: right;">Maybe</th>
+<th style="text-align: right;">No</th>
+<th style="text-align: right;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: right;">2235</td>
+<td style="text-align: right;">3465</td>
+<td style="text-align: right;">2390</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-second" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-8" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(b) Percentages</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sexuality</th>
+<th style="text-align: left;">Maybe</th>
+<th style="text-align: left;">No</th>
+<th style="text-align: left;">Yes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Non-binary/transgender</td>
+<td style="text-align: left;">22%</td>
+<td style="text-align: left;">35%</td>
+<td style="text-align: left;">43%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex assigned at birth</td>
+<td style="text-align: left;">28%</td>
+<td style="text-align: left;">43%</td>
+<td style="text-align: left;">30%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tbl-third" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-panel-8" style="flex-basis: 33.3%;justify-content: center;">
+<table class="table">
+<caption>(c) Results</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">very statistically significant</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-stack-bar-graph-trans-unsure" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-stack-bar-graph-trans-unsure-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students around uncertainty on what to do after leaving school</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the chi-squared test results, there are very statistically significant relationships with non-binary/transgender status and career aspirations in pursuing further education, pursuing a job/career, pursuing further training and uncertainty. What is noticeable is that for non-binary/transgender students, the proportion answering <em>yes</em> is below those of students identifying with their sex assigned at birth for pursuing further education, job/career, further training, but not uncertainty, highlighting the more precarious nature of non-binary and transgender student’s livlihoods after secondary education.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

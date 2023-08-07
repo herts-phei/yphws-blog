@@ -17,7 +17,7 @@ library(knitr)
 library(simplermarkdown)
 library(here)
 
-box::use(../../../../phei_functions/hes)
+box::use(../../../phei_functions/hes)
 
 source(here("R", "table.R"))
 source(here("R", "functions.R"))
@@ -129,7 +129,6 @@ summary <- tibble(education = "&#x2705;",
 
 print(kable(summary))
 ```
-
 : Summary Table of Aspirational Pathways
 
 Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students
@@ -191,171 +190,6 @@ tables_df_suppressed[["education"]] %>% pivot_longer(
                  legend.key = element_rect(fill = "transparent", colour = "transparent"),
                  legend.position = "bottom", axis.title.y = element_blank())
 ```
-
-The plot above shows differences in the relative proportions of care-experienced and non care-experienced students' responses to pursuing education. A difference can be observed in the category of the responses through a visual glance. After performing a chi-squared test analysis, this difference is found to be statistically significant.
-
-<!-- ### Job/career -->
-
-<!-- ::: {#tbl-panel-2 layout-ncol="3"} -->
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed[["job"]])) -->
-<!-- ``` -->
-
-<!-- : Numbers (suppressed) {#tbl-first} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed_proportions[["job"]])) -->
-<!-- ``` -->
-
-<!-- : Percentages {#tbl-second} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(p_value_table("job"))) -->
-<!-- ``` -->
-
-<!-- : Results {#tbl-third} -->
-
-<!-- Plan to get a job after leaving school -->
-<!-- ::: -->
-
-<!-- ### Training -->
-
-<!-- ::: {#tbl-panel-3 layout-ncol="3"} -->
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed[["training"]])) -->
-<!-- ``` -->
-
-<!-- : Numbers (suppressed) {#tbl-first} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed_proportions[["training"]])) -->
-<!-- ``` -->
-
-<!-- : Percentages {#tbl-second} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(p_value_table("training"))) -->
-<!-- ``` -->
-
-<!-- : Results {#tbl-third} -->
-
-<!-- Plan to train for a skilled job after leaving school -->
-<!-- ::: -->
-
-<!-- ### Family -->
-
-<!-- ::: {#tbl-panel-4 layout-ncol="3"} -->
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed[["family"]])) -->
-<!-- ``` -->
-
-<!-- : Numbers (suppressed) {#tbl-first} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed_proportions[["family"]])) -->
-<!-- ``` -->
-
-<!-- : Percentages {#tbl-second} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(p_value_table("family"))) -->
-<!-- ``` -->
-
-<!-- : Results {#tbl-third} -->
-
-<!-- Plan to start a family after leaving school -->
-<!-- ::: -->
-
-<!-- ### Uncertain -->
-
-<!-- ::: {#tbl-panel-5 layout-ncol="3"} -->
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed[["unsure"]])) -->
-<!-- ``` -->
-
-<!-- : Numbers (suppressed) {#tbl-first} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed_proportions[["unsure"]])) -->
-<!-- ``` -->
-
-<!-- : Percentages {#tbl-second} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(p_value_table("unsure"))) -->
-<!-- ``` -->
-
-<!-- : Results {#tbl-third} -->
-
-<!-- Aren't sure what they want to do after leaving school -->
-<!-- ::: -->
-
-<!-- ### Other -->
-
-<!-- ::: {#tbl-panel-6 layout-ncol="3"} -->
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed[["other"]])) -->
-<!-- ``` -->
-
-<!-- : Numbers (suppressed) {#tbl-first} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(tables_df_suppressed_proportions[["other"]])) -->
-<!-- ``` -->
-
-<!-- : Percentages {#tbl-second} -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- print(kable(p_value_table("other"))) -->
-<!-- ``` -->
-
-<!-- : Results {#tbl-third} -->
-
-<!-- Have other plans after leaving school -->
-<!-- ::: -->
-
-## Conclusions/implications
-
-Here, we identify that the students being looked after status has a very statistically significant effect with continuing education, and no significance with any other pathway after leaving school.
-
-Despite only having one pathway with statistical significance, this is noteworthy in that it can provide carers, teachers, and others involved in the health and wellbeing of care-experienced CYPs an avenue in monitoring potential shortcomings of a care-experienced CYP's potential. Further educational pursuits after school are highly associated with better health outcomes, lower deprivation, and higher earnings potential in adulthood. Reducing these inequities to access to higher education or other further educational pursuits is a key element to public health policy.
-
-<details>
-
-<summary>More on the results</summary>
-
-<br> Below shows the chi-square tests applied to the contingency tables collated together:
-
-```{r}
-#| output: asis
-
-chisq_results %>% imap( ~ tibble(
-  question = .y,
-  "x^2" = round(.x$statistic, 2),
-  p.value = round(.x$p.value, 2)
-)) %>% bind_rows() %>% kable()
-```
-
-A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student's status of being looked after and the specific prospect response.
-
-A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
-
-The below shows tables for the non-significant pathways.
 
 ### Job/career
 
@@ -491,5 +325,31 @@ print(kable(p_value_table("other")))
 
 Have other plans after leaving school
 :::
+
+## Conclusions/implications
+
+Here, we identify that the students being looked after status has a very statistically significant effect with continuing education, and no significance with any other pathway after leaving school.
+
+Despite only having one pathway with statistical significance, this is noteworthy in that it can provide carers, teachers, and others involved in the health and wellbeing of care-experienced CYPs an avenue in monitoring potential shortcomings of a care-experienced CYP's potential. Further educational pursuits after school are highly associated with better health outcomes, lower deprivation, and higher earnings potential in adulthood. Reducing these inequities to access to higher education or other further educational pursuits is a key element to public health policy.
+
+<details>
+
+<summary>More on the results</summary>
+
+<br> Below shows the chi-square tests applied to the contingency tables collated together:
+
+```{r}
+#| output: asis
+
+chisq_results %>% imap( ~ tibble(
+  question = .y,
+  "x^2" = round(.x$statistic, 2),
+  p.value = round(.x$p.value, 2)
+)) %>% bind_rows() %>% kable()
+```
+
+A p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student's status of being looked after and the specific prospect response.
+
+A chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on *how* or *why* the relationship between a children being looked after affects their prospective choices after education, but these are beyond the scope of this report.
 
 </details>
