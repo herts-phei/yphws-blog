@@ -124,5 +124,89 @@
     "title": "Do LGBQ+ YP have different aspirations for their future?",
     "section": "Conclusions/implications",
     "text": "Conclusions/implications\nWe identify that whether a student is straight/heterosexual or part of the LGBQ+ group has a very statistically significant effect with plans to get a job after leaving school, plans to pursue training, and uncertainty with what to do.\nThis is noteworthy in that it highlights differences\n\n\nMore on the results\n\n Below shows the chi-square tests applied to the contingency tables collated together:\n\n\n\n\nquestion\nx^2\np.value\n\n\n\n\neducation\n5.73\n0.06\n\n\njob\n35.66\n0.00\n\n\ntraining\n58.18\n0.00\n\n\nfamily\n0.24\n0.89\n\n\nunsure\n52.02\n0.00\n\n\nother\n0.24\n0.89\n\n\n\n\nA p.value of less than 0.05 indicates statistical significance, and that there is a relationship between the student’s LGBTQ+ label and the specific prospect response.\nA chi-squared test is a simple nonparametric test which only tells us of an association if statistical significance is found. Further analyses can be performed to elucidate further details on how or why the relationship between a student’s sexual orientation affects their decision for pursuing a job after leaving school, training, and uncertainty with what to do, but these are beyond the scope of this report."
+  },
+  {
+    "objectID": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#physical-activity",
+    "href": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#physical-activity",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Physical activity",
+    "text": "Physical activity\n\n\n\n\n\nFigure 2. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Physical activity, Portions, Sex, Age, Ethnicity, IMD quintile.\n\n\n\n\nCompared to the baseline of not performing at least 1 hour of physical activity in a day within a week, performing at least 1 hour of physical activity is associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Completing at least 1 hour of physical activity 1-3 days within a week is associated with a 1.31 time increase likelihood of self-perceived weight being “Just right”. The likelihood of self-perceived weight being “Just right” increases with the number of days at least 1 hour of physical activity is completed within a week, completing 4-5 and 6-7 days is associated with an increase of 1.6 and 1.88, respectively, times likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#portions",
+    "href": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#portions",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Portions",
+    "text": "Portions\n\n\n\n\n\nFigure 3. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Portions, Physical activity, Sex, Age, Ethnicity, IMD quintile.\n\n\n\n\nCompared to the baseline of not eating any portions or fruit or vegetables the previous day, eating 2 or more fruit or vegetables the previous day was associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Eating 4 or 5 portions or fruit or vegetables the previous day was a associated with a 1.88 and 1.86, respectively, times increase in likelihood of self-perceived weight being “Just right”. Eating 1 portion or fruit or vegetables the previous day was not associated with an increase likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#ethnicity",
+    "href": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#ethnicity",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Ethnicity",
+    "text": "Ethnicity\n\n\n\n\n\nFigure 4. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Ethnicity, Portions, Physical activity, Sex, Age, IMD quintile.\n\n\n\n\nCompared to the baseline value, White British, no ethnicity was associated with a significant increase in likelihood of their self-perceived weight being “Just right”. However, “any other Asian background”, “Indian”, “Prefer no to say” and “Gypsy or Irish traveler” were associated with an increase likelihood of self-perceived weight being not “Just right”."
+  },
+  {
+    "objectID": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#deprivation",
+    "href": "is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#deprivation",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Deprivation",
+    "text": "Deprivation\n\n\n\n\n\nFigure 5. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: IMD quintile, Ethnicity, Portions, Physical activity, Sex, Age.\n\n\n\n\nCompared to the baseline value of the most deprived IMD quintile, quintile 1, the less deprived areas are associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Being from IMD quintile 4 or 5 - least deprived is associated with a 1.25 and 1.28, respectively, times increase in likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#physical-activity",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#physical-activity",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Physical activity",
+    "text": "Physical activity\n\n\n\n\n\nFigure 2. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Physical activity, Portions, Sex, Age, Ethnicity, IMD quintile.\n\n\n\n\nCompared to the baseline of not performing at least 1 hour of physical activity in a day within a week, performing at least 1 hour of physical activity is associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Completing at least 1 hour of physical activity 1-3 days within a week is associated with a 1.31 time increase likelihood of self-perceived weight being “Just right”. The likelihood of self-perceived weight being “Just right” increases with the number of days at least 1 hour of physical activity is completed within a week, completing 4-5 and 6-7 days is associated with an increase of 1.6 and 1.88, respectively, times likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#portions",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#portions",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Portions",
+    "text": "Portions\n\n\n\n\n\nFigure 3. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Portions, Physical activity, Sex, Age, Ethnicity, IMD quintile.\n\n\n\n\nCompared to the baseline of not eating any portions or fruit or vegetables the previous day, eating 2 or more fruit or vegetables the previous day was associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Eating 4 or 5 portions or fruit or vegetables the previous day was a associated with a 1.88 and 1.86, respectively, times increase in likelihood of self-perceived weight being “Just right”. Eating 1 portion or fruit or vegetables the previous day was not associated with an increase likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#ethnicity",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#ethnicity",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Ethnicity",
+    "text": "Ethnicity\n\n\n\n\n\nFigure 4. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Ethnicity, Portions, Physical activity, Sex, Age, IMD quintile.\n\n\n\n\nCompared to the baseline value, White British, no ethnicity was associated with a significant increase in likelihood of their self-perceived weight being “Just right”. However, “any other Asian background”, “Indian”, “Prefer no to say” and “Gypsy or Irish traveler” were associated with an increase likelihood of self-perceived weight being not “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#deprivation",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise.html#deprivation",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Deprivation",
+    "text": "Deprivation\n\n\n\n\n\nFigure 5. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: IMD quintile, Ethnicity, Portions, Physical activity, Sex, Age.\n\n\n\n\nCompared to the baseline value of the most deprived IMD quintile, quintile 1, the less deprived areas are associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Being from IMD quintile 4 or 5 - least deprived is associated with a 1.25 and 1.28, respectively, times increase in likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#physical-activity",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#physical-activity",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Physical activity",
+    "text": "Physical activity\n\n\n\n\n\nFigure 2. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Physical activity, Portions, Sex, Age, Ethnicity, IMD quintile.\n\n\n\n\nCompared to the baseline of not performing at least 1 hour of physical activity in a day within a week, performing at least 1 hour of physical activity is associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Completing at least 1 hour of physical activity 1-3 days within a week is associated with a 1.3 time increase likelihood of self-perceived weight being “Just right”. The likelihood of self-perceived weight being “Just right” increases with the number of days at least 1 hour of physical activity is completed within a week, completing 4-5 and 6-7 days is associated with an increase of 1.6 and 1.9, respectively, times likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#portions",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#portions",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Portions",
+    "text": "Portions\n\n\n\n\n\nFigure 3. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Portions, Physical activity, Sex, Age, Ethnicity, IMD quintile.\n\n\n\n\nCompared to the baseline of not eating any portions or fruit or vegetables the previous day, eating 2 or more fruit or vegetables the previous day was associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Eating 4 or 5 portions or fruit or vegetables the previous day was a associated with a 1.88 and 1.87, respectively, times increase in likelihood of self-perceived weight being “Just right”. Eating 1 portion or fruit or vegetables the previous day was not associated with an increase likelihood of self-perceived weight being “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#ethnicity",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#ethnicity",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Ethnicity",
+    "text": "Ethnicity\n\n\n\n\n\nFigure 4. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: Ethnicity, Portions, Physical activity, Sex, Age, IMD quintile.\n\n\n\n\nCompared to the baseline value, White British, no ethnicity was associated with a significant increase in likelihood of their self-perceived weight being “Just right”. However, “any other Asian background”, “Indian”, “Prefer no to say” and “Gypsy or Irish traveler” were associated with an increase likelihood of self-perceived weight being not “Just right”."
+  },
+  {
+    "objectID": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#deprivation",
+    "href": "posts/2023-07-24-is_self_perceived_weight_associated_with_poorer_diet_and_lower_exercise/index.html#deprivation",
+    "title": "Is self-perceived weight associated with poorer diet and lower exercise?",
+    "section": "Deprivation",
+    "text": "Deprivation\n\n\n\n\n\nFigure 5. Plot of adjusted odds ratios and 95% confidence intervals for predictors of self-perceived weight being “Just right”. Included within the model: IMD quintile, Ethnicity, Portions, Physical activity, Sex, Age.\n\n\n\n\nCompared to the baseline value of the most deprived IMD quintile, quintile 1, the less deprived areas are associated with a significant increase in the likelihood of self-perceived weight being “Just right”. Being from IMD quintile 4 or 5 - least deprived is associated with a 1.27 and 1.29, respectively, times increase in likelihood of self-perceived weight being “Just right”."
   }
 ]
