@@ -9,11 +9,13 @@ editor: visual
 ```{r warning=FALSE, echo=FALSE, error=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-library(pacman)
 library(sjmisc)
-p_load(readr, tidyverse, PHEindicatormethods, ggplot2)
+library(readr)
+library(tidyverse)
+library(PHEindicatormethods)
+library(ggplot2)
 
-box::use(../../phei_functions/phei)
+box::use(../../../../phei_functions/phei)
 
 
 data_raw_cleaned <- read_csv("data/private/2022_data_raw_cleaned.csv") %>% 
@@ -26,12 +28,11 @@ data_raw_cleaned <- read_csv("data/private/2022_data_raw_cleaned.csv") %>%
 
 # Abstract
 
-Young people within Hertfordshire have different self-perceived weights, the World Health Organisation state that this perception is not always in line with clinical definitions of normal weight, overweight and obesity. Body size disturbances and body dissatisfaction may be caused by the development of eating disorders. This brief analysis seeks to ascertain whether a student's self-perceived weight has a relationship with their physical activity levels and diet.
-
-In the data collected for the latest YPHWS cohort, there were `r nrow(data_raw_cleaned %>% filter(!is.na(weight)))` students out of a total of `r nrow(data_raw_cleaned)` students have a reported self-perceived weight, representing `r round(nrow(data_raw_cleaned %>% filter(!is.na(weight)))/ nrow(data_raw_cleaned) * 100, 1)`% of the total student population.
+Young people within Hertfordshire have different self-perceived weights. The World Health Organisation state that this perception is not always in line with clinical definitions of normal weight, overweight and obesity. Body size disturbances and body dissatisfaction may be caused by the development of eating disorders. This brief analysis seeks to ascertain whether a student's self-perceived weight has a relationship with their physical activity levels and diet.
 
 ```{r warning=FALSE, echo=FALSE, error=FALSE, message=FALSE, fig.cap="Figure 1. Proportion of self-perceived weights."}
 data_raw_cleaned %>% 
+  filter(!is.na(weight)) %>% 
   count(weight, name = "count") %>%
   add_count(wt = count, name = "total_count") %>% 
   mutate(weight = factor(weight, levels = c("Underweight", "Just Right", "Overweight",
@@ -43,9 +44,12 @@ data_raw_cleaned %>%
   ggplot2::ylab("Proportion") +
   ggplot2::xlab("Self-perceived weight") +
   ggplot2::theme(axis.text.x = element_text(angle = 0, vjust = 1, hjust = 0.5)) 
+
 ```
 
 # Methods
+
+In the data collected for the 2021/22 YPHWS cohort data, there were `r nrow(data_raw_cleaned %>% filter(!is.na(weight)))` students out of a total of `r nrow(data_raw_cleaned)` students have a reported self-perceived weight, representing `r round(nrow(data_raw_cleaned %>% filter(!is.na(weight)))/ nrow(data_raw_cleaned) * 100, 1)`% of the total student population. Please note that in results, all models were adjusted for age, sex, ethnicity, and deprivation.
 
 The survey contains data on the three variables of interest:
 
@@ -63,7 +67,9 @@ The survey contains data on the three variables of interest:
 <summary>Physical activity</summary>
 
 -   Physical activity - In the past week, on how many days have you done at least an hour (60 minutes or more) of physical activity, which was enough to raise your breathing rate?
-    -   Responses: `r paste(sort(unique(data_raw_cleaned$pa_60)), collapse = ", ")` <!-- -   Sports club - Are you a part of or attending a sports group? --> <!--     -   Responses: `r paste(unique(data_raw_cleaned$clubs_sports), collapse = ", ")` -->
+    -   Responses: `r paste(sort(unique(data_raw_cleaned$pa_60)), collapse = ", ")`
+       - "At least 1 hour of physical activity completed 7 days a week" is the NHS recommendations
+<!-- -   Sports club - Are you a part of or attending a sports group? --> <!--     -   Responses: `r paste(unique(data_raw_cleaned$clubs_sports), collapse = ", ")` -->
 
 </details>
 
@@ -148,19 +154,19 @@ ggplot(odd_ratios_pa, aes(x = OR, y = variable)) +
   geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
   geom_errorbarh(aes(xmax = `2.5 %`, xmin = `97.5 %`), size = .5, height = 
                    .2, color = "gray50") +
-  geom_point(size = 3.5, color = "blue") +
+  geom_point(size = 3.5, color = "#3969B5") +
   theme_bw() +
   theme(panel.grid.minor = element_blank()) +
   ylab(str_wrap("Number of days at least 1 hour of physical activity was completed within a week",
        width = 50)) +
-  xlab("Odds ratio") +
+  xlab("Odds ratio of responding \"Just right\"") +
   # annotate("text", x = 1.1, y = 2, angle=90, size=3, label = "Not performing at least 1 hour of physical activity in a day within a week") +
-  ggtitle(str_wrap("self-perceived weight depending on how many days days at least 1 hour of physical activity was performed within a week", width = 60),
-          subtitle = str_wrap("Baseline - Not performing at least 1 hour of physical activity in a day within a week", width = 60))
+  ggtitle(str_wrap("Self-perceived weight depending on how many days days at least 1 hour of physical activity was performed within a week", width = 60),
+          subtitle = str_wrap("Baseline - Not meeting NHS guidelines", width = 60))
 
 ```
 
-Compared to the baseline of not performing at least 1 hour of physical activity in a day within a week, performing at least 1 hour of physical activity is associated with a significant increase in the likelihood of self-perceived weight being "Just right". Completing at least 1 hour of physical activity 1-3 days within a week is associated with a `r odd_ratios_pa$OR_text[odd_ratios_pa$variable == "Physical activity 1-3"]` time increase likelihood of self-perceived weight being "Just right". The likelihood of self-perceived weight being "Just right" increases with the number of days at least 1 hour of physical activity is completed within a week, completing 4-5 and 6-7 days is associated with an increase of `r odd_ratios_pa$OR_text[odd_ratios_pa$variable == "Physical activity 4-5"]` and `r odd_ratios_pa$OR_text[odd_ratios_pa$variable == "Physical activity 6-7"]`, respectively, times likelihood of self-perceived weight being "Just right".
+Compared to the baseline of not performing at least 1 hour of physical activity in a day within a week, performing at least 1 hour of physical activity is associated with a significant increase in the likelihood of self-perceived weight being "Just right". Completing at least 1 hour of physical activity 1-3 days within a week is associated with a **`r odd_ratios_pa$OR_text[odd_ratios_pa$variable == "Physical activity 1-3"]`** time increase likelihood of self-perceived weight being "Just right". The likelihood of self-perceived weight being "Just right" increases with the number of days at least 1 hour of physical activity is completed within a week, completing 4-5 and 6-7 days is associated with an increase of **`r odd_ratios_pa$OR_text[odd_ratios_pa$variable == "Physical activity 4-5"]`** and **`r odd_ratios_pa$OR_text[odd_ratios_pa$variable == "Physical activity 6-7"]`**, respectively, times likelihood of self-perceived weight being "Just right".
 
 ## Portions
 
@@ -202,18 +208,18 @@ ggplot(odd_ratios_portions, aes(x = OR, y = variable)) +
   geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
   geom_errorbarh(aes(xmax = `2.5 %`, xmin = `97.5 %`), size = .5, height = 
                    .2, color = "gray50") +
-  geom_point(size = 3.5, color = "blue") +
+  geom_point(size = 3.5, color = "#3969B5") +
   theme_bw() +
   theme(panel.grid.minor = element_blank()) +
   ylab("Portions of fruit or vegetables") +
-  xlab("Odds ratio") +
+  xlab("Odds ratio of responding \"Just right\"") +
   # annotate("text", x = 1.1, y = 2.5, angle=90, size=3, label = "No portions of fruit or vegetables") +
   ggtitle("Self-perceived weight depending on daily fruit or vegetables portions",
           subtitle = "Baseline - No portions of fruit or vegetables")
 
 ```
 
-Compared to the baseline of not eating any portions or fruit or vegetables the previous day, eating 2 or more fruit or vegetables the previous day was associated with a significant increase in the likelihood of self-perceived weight being "Just right". Eating 4 or 5 portions or fruit or vegetables the previous day was a associated with a `r odd_ratios_portions$OR_text[odd_ratios_portions$variable == "portions - 4"]` and `r odd_ratios_portions$OR_text[odd_ratios_portions$variable == "portions - 5+"]`, respectively, times increase in likelihood of self-perceived weight being "Just right". Easting 1 portion or fruit or vegetables the previous day was not associated with an increase likelihood of self-perceived weight being "Just right".
+Compared to the baseline of not eating any portions or fruit or vegetables the previous day, eating 2 or more fruit or vegetables the previous day was associated with a significant increase in the likelihood of self-perceived weight being "Just right". Eating 4 or 5 portions or fruit or vegetables the previous day was a associated with a **`r odd_ratios_portions$OR_text[odd_ratios_portions$variable == "portions - 4"]`** and **`r odd_ratios_portions$OR_text[odd_ratios_portions$variable == "portions - 5+"]`**, respectively, times increase in likelihood of self-perceived weight being "Just right". Eating 1 portion or fruit or vegetables the previous day was not associated with an increase likelihood of self-perceived weight being "Just right".
 
 ## Ethnicity
 
@@ -245,19 +251,19 @@ ggplot(odd_ratios_eth, aes(x = OR, y = variable)) +
   geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
   geom_errorbarh(aes(xmax = `2.5 %`, xmin = `97.5 %`), size = .5, height = 
                    .2, color = "gray50") +
-  geom_point(size = 3.5, color = "blue") +
+  geom_point(size = 3.5, color = "#3969B5") +
   theme_bw() +
   theme(panel.grid.minor = element_blank()) +
   ylab(str_wrap("Ethnicity",
                 width = 50)) +
-  xlab("Odds ratio") +
+  xlab("Odds ratio of responding \"Just right\"") +
   # annotate("text", x = 1.3, y = 3, angle=90, size=3, label = "Baseline - White British") +
   ggtitle(str_wrap("Self-perceived weight by Ethnicity", width = 60), 
            subtitle = "Baseline - White British")
 
 ```
 
-Compared to the baseline value, White British, no ethnicity was associated with a significant increase in likelihood of their self-perceived weight being "Just right". However, any other Asian background, Indian, Prefer no to say and Gypsy or Irish traveler were associated with an increase likelihood of self-perceived weight being not "Just right".
+Compared to the baseline value, White British, no ethnicity was associated with a significant increase in likelihood of their self-perceived weight being "Just right". However, "any other Asian background", "Indian", "Prefer no to say" and "Gypsy or Irish traveler" were associated with an increase likelihood of self-perceived weight being not "Just right".
 
 ## Deprivation
 
@@ -286,19 +292,19 @@ ggplot(odd_ratios_imd, aes(x = OR, y = variable)) +
   geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") +
   geom_errorbarh(aes(xmax = `2.5 %`, xmin = `97.5 %`), size = .5, height = 
                    .2, color = "gray50") +
-  geom_point(size = 3.5, color = "blue") +
+  geom_point(size = 3.5, color = "#3969B5") +
   theme_bw() +
   theme(panel.grid.minor = element_blank()) +
   ylab(str_wrap("IMD Quintile",
                 width = 50)) +
-  xlab("Odds ratio") +
+  xlab("Odds ratio of responding \"Just right\"") +
   # annotate("text", x = 0.95, y = 2, angle=90, size=3, label = "Baseline - IMD quintile 1 - Most Deprived") +
   ggtitle(str_wrap("Self-perceived weight by Deprivation", width = 60),
           subtitle = "Baseline - IMD quintile 1 - Most Deprived")
 
 ```
 
-Compared to the baseline value of the most deprived IMD quintile, quintile 1, the less deprived areas are associated with a significant increase in the likelihood of self-perceived weight being "Just right". Being from IMD quintile 4 or 5 - least deprived is associated with a `r odd_ratios_imd$OR_text[odd_ratios_imd$variable == "Quintile 4"]` and `r odd_ratios_imd$OR_text[odd_ratios_imd$variable == "Quintile 5 - Least Deprived"]`, respectively, times increase in likelihood of self-perceived weight being "Just right".
+Compared to the baseline value of the most deprived IMD quintile, quintile 1, the less deprived areas are associated with a significant increase in the likelihood of self-perceived weight being "Just right". Being from IMD quintile 4 or 5 - least deprived is associated with a **`r odd_ratios_imd$OR_text[odd_ratios_imd$variable == "Quintile 4"]`** and **`r odd_ratios_imd$OR_text[odd_ratios_imd$variable == "Quintile 5 - Least Deprived"]`**, respectively, times increase in likelihood of self-perceived weight being "Just right".
 
 # Conclusions
 
