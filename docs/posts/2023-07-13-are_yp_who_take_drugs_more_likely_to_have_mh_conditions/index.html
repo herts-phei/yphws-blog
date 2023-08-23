@@ -297,10 +297,12 @@ ga('send', {
 </div>
 <p>A total of 765 students in this analysis claimed to have taken drugs. After conducting a logistic regression analysis having controlled for sex and age, it was found that:</p>
 <ul>
-<li><p>Students who claimed to have taken drugs are <strong>1.39 times</strong> more likely to be worried about their mental health than students who did not take drugs. This association is significant (p-value &lt; 0.05).</p></li>
-<li><p>Students who claimed to have taken drugs are <strong>2.88 times</strong> more likely to skip school due to mental health reasons than students who did not take drugs. This association is significant (p-value &lt; 0.05).</p></li>
-<li><p>Students who claimed to have taken drugs are <strong>2.49 times</strong> more likely to access mental health services than students who did not take drugs. This association is significant (p-value &lt; 0.05).</p></li>
-<li><p>Students who claimed to have taken drugs are <strong>3.97 times</strong> more likely to have a mental health condition than students who did not take drugs. This association is significant (p-value &lt; 0.05).</p></li>
+<li><p>Students who claimed to have taken drugs are <strong>1.39 times</strong> more likely to be worried about their mental health than students who did not take drugs. This association is significant (p-value &lt; 0.05).;</p></li>
+<li><p>Students who claimed to have taken drugs are <strong>2.88 times</strong> more likely to skip school due to mental health reasons than students who did not take drugs. This association is significant (p-value &lt; 0.05).;</p></li>
+<li><p>Students who claimed to have taken drugs are <strong>2.49 times</strong> more likely to access mental health services than students who did not take drugs. This association is significant (p-value &lt; 0.05).;</p></li>
+<li><p>Students who claimed to have taken drugs are <strong>3.97 times</strong> more likely to have a mental health condition than students who did not take drugs. This association is significant (p-value &lt; 0.05).;</p></li>
+<li><p>Females who claimed to have taken drugs are <strong>significantly more likely</strong> to worry about their mental health, skip school due to mental health, access mental health services and have a mental health condition compared to males who claim to have taken drugs’</p></li>
+<li><p>Year 10 students who claimed to have taken drugs are <strong>significantly more likely</strong> to access mental health services compared to year 9 students.</p></li>
 </ul>
 <p><br></p>
 <section id="is-there-an-association-between-gender-drugs-and-mental-health-conditions" class="level3">
@@ -336,6 +338,176 @@ ga('send', {
 <section id="conclusionsimplications" class="level2">
 <h2 class="anchored" data-anchor-id="conclusionsimplications"><strong>Conclusions/implications</strong></h2>
 <p>In this report, we highlight that there is a significant link between drug use and an individual’s mental health. Young people who take drugs are more likely to worry about their mental health. This is a cause for concern as drug use is often conducted in order to suppress mental health conditions, such as anxiety and depression. Young people who take drugs are also more likely to skip school due to mental health issues, which in turn will potentially affect their education in the short and long term. Students with zero absence are 10 times more likely to achieve the English Baccalaureate than those who miss 15%-20% of their school year. Despite these findings, it cannot be said for certain whether drug use <strong>causes</strong> issues that arise with mental health, it can only be claimed there is a link between the two variables.</p>
+<!-- ### Exploration -->
+<!-- ```{r} -->
+<!-- model_data <- data %>% -->
+<!--   dplyr::select(schyear, age, District, sex, drug_ever, worry_mental, imd_quintile, schyear, life_satisfied, condition_mental, skipschool_mentalhealth, mental_accessed, -->
+<!--                 ethnicity) %>% -->
+<!--   filter(!is.na(drug_ever), -->
+<!--          !is.na(worry_mental), -->
+<!--          imd_quintile != "unknown", -->
+<!--          sex %in% c("Male", "Female")) %>% -->
+<!--   dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs", -->
+<!--                               "no", -->
+<!--                               "yes")), -->
+<!--                # age = as.factor(age), -->
+<!--                 worry_mental = as.factor(ifelse(worry_mental == "Yes", "Yes", "No")), -->
+<!--                 mental_accessed = as.factor(ifelse(mental_accessed == "Yes", "Yes", "No")), -->
+<!--                 condition_mental = as.factor(ifelse(condition_mental == "Yes", "Yes", "No")), -->
+<!--                 skipschool_mentalhealth = as.factor(ifelse(skipschool_mentalhealth == "Yes", "Yes", "No")) -->
+<!--          ) %>%  -->
+<!--   filter(drug_yes_no == "yes", -->
+<!--          schyear != "Not at school/other") -->
+<!-- model <- glm(data = model_data, skipschool_mentalhealth ~ drug_yes_no + sex + schyear  + imd_quintile, family = binomial) -->
+<!-- model <- glm(data = model_data, skipschool_mentalhealth ~ sex + schyear  + imd_quintile, family = binomial) -->
+<!-- ### Worry -->
+<!-- model_worry <- glm(data = model_data, worry_mental ~   schyear + sex + imd_quintile, family = binomial) -->
+<!-- model_worry <- glm(data = model_data, worry_mental ~   schyear + sex + imd_quintile, family = binomial) -->
+<!-- summary(model_worry) -->
+<!-- df <- as.data.frame(exp(coef(model_worry))) %>% -->
+<!--   rename(Coefficient =  "exp(coef(model_worry))") %>% -->
+<!--   mutate(sex = rownames(.)) %>% -->
+<!--   left_join(mutate(as.data.frame(exp(confint(model_worry))), sex = row.names(.))) %>% -->
+<!--   mutate(sex = gsub("Sex", "", sex)) %>% -->
+<!--   filter(sex != "(Intercept)") %>% -->
+<!--   rename(LCL = "2.5 %", UCL = "97.5 %") -->
+<!-- ggplot(df, aes(x = Coefficient, y = sex)) + -->
+<!--     geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") + -->
+<!--     geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height = -->
+<!--                      .2, color = "gray50") + -->
+<!--     geom_point(size = 3.5, color = "#2c3e50") + -->
+<!--     theme_bw()+ -->
+<!--     theme(panel.grid.minor = element_blank()) + -->
+<!--     ylab("District") + -->
+<!--     xlab("Odds ratio") + -->
+<!--   labs(title = "Worry having taken drugs ", -->
+<!--        subtitle = "Baseline group: Females") -->
+<!-- ### Skip School -->
+<!-- model_data <- data %>% -->
+<!--   dplyr::select(schyear, age, District, sex, drug_ever, worry_mental, imd_quintile, schyear, life_satisfied, condition_mental, skipschool_mentalhealth, mental_accessed, -->
+<!--                 ethnicity) %>% -->
+<!--   filter(!is.na(drug_ever), -->
+<!--          !is.na(skipschool_mentalhealth), -->
+<!--          imd_quintile != "unknown", -->
+<!--          sex %in% c("Male", "Female")) %>% -->
+<!--   dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs", -->
+<!--                               "no", -->
+<!--                               "yes")), -->
+<!--                # age = as.factor(age), -->
+<!--                 worry_mental = as.factor(ifelse(worry_mental == "Yes", "Yes", "No")), -->
+<!--                 mental_accessed = as.factor(ifelse(mental_accessed == "Yes", "Yes", "No")), -->
+<!--                 condition_mental = as.factor(ifelse(condition_mental == "Yes", "Yes", "No")), -->
+<!--                 skipschool_mentalhealth = as.factor(ifelse(skipschool_mentalhealth == "Yes", "Yes", "No")) -->
+<!--          ) %>%  -->
+<!--   filter(drug_yes_no == "yes", -->
+<!--          schyear != "Not at school/other") -->
+<!-- model_skip <- glm(data = model_data, skipschool_mentalhealth ~   schyear + sex + imd_quintile, family = binomial) -->
+<!-- model_skip <- glm(data = model_data, skipschool_mentalhealth ~   schyear + sex + imd_quintile, family = binomial) -->
+<!-- summary(model_skip) -->
+<!-- df <- as.data.frame(exp(coef(model_skip))) %>% -->
+<!--   rename(Coefficient =  "exp(coef(model_skip))") %>% -->
+<!--   mutate(Group = rownames(.)) %>% -->
+<!--   left_join(mutate(as.data.frame(exp(confint(model_skip))), Group = row.names(.))) %>% -->
+<!--   mutate(Group = gsub("Group", "", Group)) %>% -->
+<!--   filter(Group != "(Intercept)") %>% -->
+<!--   rename(LCL = "2.5 %", UCL = "97.5 %") -->
+<!-- ggplot(df, aes(x = Coefficient, y = Group)) + -->
+<!--     geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") + -->
+<!--     geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height = -->
+<!--                      .2, color = "gray50") + -->
+<!--     geom_point(size = 3.5, color = "#2c3e50") + -->
+<!--     theme_bw()+ -->
+<!--     theme(panel.grid.minor = element_blank()) + -->
+<!--     ylab("District") + -->
+<!--     xlab("Odds ratio") + -->
+<!--   labs(title = "Skip School having taken drugs ", -->
+<!--        subtitle = "Baseline group: Females") -->
+<!-- ### Access -->
+<!-- model_data <- data %>% -->
+<!--   dplyr::select(schyear, age, District, sex, drug_ever, worry_mental, imd_quintile, schyear, life_satisfied, condition_mental, skipschool_mentalhealth, mental_accessed, -->
+<!--                 ethnicity) %>% -->
+<!--   filter(!is.na(drug_ever), -->
+<!--          !is.na(mental_accessed), -->
+<!--          imd_quintile != "unknown", -->
+<!--          sex %in% c("Male", "Female")) %>% -->
+<!--   dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs", -->
+<!--                               "no", -->
+<!--                               "yes")), -->
+<!--                # age = as.factor(age), -->
+<!--                 worry_mental = as.factor(ifelse(worry_mental == "Yes", "Yes", "No")), -->
+<!--                 mental_accessed = as.factor(ifelse(mental_accessed == "Yes", "Yes", "No")), -->
+<!--                 condition_mental = as.factor(ifelse(condition_mental == "Yes", "Yes", "No")), -->
+<!--                 skipschool_mentalhealth = as.factor(ifelse(skipschool_mentalhealth == "Yes", "Yes", "No")) -->
+<!--          ) %>%  -->
+<!--   filter(drug_yes_no == "yes", -->
+<!--          schyear != "Not at school/other") -->
+<!-- model_access <- glm(data = model_data, mental_accessed ~   schyear + sex + imd_quintile, family = binomial) -->
+<!-- model_access <- glm(data = model_data, mental_accessed ~   schyear , family = binomial) -->
+<!-- model_access <- glm(data = model_data, mental_accessed ~   sex , family = binomial) -->
+<!-- summary(model_access) -->
+<!-- df <- as.data.frame(exp(coef(model_access))) %>% -->
+<!--   rename(Coefficient =  "exp(coef(model_access))") %>% -->
+<!--   mutate(Group = rownames(.)) %>% -->
+<!--   left_join(mutate(as.data.frame(exp(confint(model_access))), Group = row.names(.))) %>% -->
+<!--   mutate(Group = gsub("Group", "", Group)) %>% -->
+<!--   filter(Group != "(Intercept)") %>% -->
+<!--   rename(LCL = "2.5 %", UCL = "97.5 %") %>%  -->
+<!--   filter(Group != "schyearYear 7") -->
+<!-- ggplot(df, aes(x = Coefficient, y = Group)) + -->
+<!--     geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") + -->
+<!--     geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height = -->
+<!--                      .2, color = "gray50") + -->
+<!--     geom_point(size = 3.5, color = "#2c3e50") + -->
+<!--     theme_bw()+ -->
+<!--     theme(panel.grid.minor = element_blank()) + -->
+<!--     ylab("District") + -->
+<!--     xlab("Odds ratio") + -->
+<!--   labs(title = "Accessing services having taken drugs ", -->
+<!--        subtitle = "Baseline group: Females") -->
+<!-- ### Condition  -->
+<!-- model_data <- data %>% -->
+<!--   dplyr::select(schyear, age, District, sex, drug_ever, worry_mental, imd_quintile, schyear, life_satisfied, condition_mental, skipschool_mentalhealth, mental_accessed, -->
+<!--                 ethnicity) %>% -->
+<!--   filter(!is.na(drug_ever), -->
+<!--          !is.na(condition_mental), -->
+<!--          imd_quintile != "unknown", -->
+<!--          sex %in% c("Male", "Female")) %>% -->
+<!--   dplyr::mutate(drug_yes_no = as.factor(ifelse(drug_ever == "I have never taken drugs", -->
+<!--                               "no", -->
+<!--                               "yes")), -->
+<!--                # age = as.factor(age), -->
+<!--                 worry_mental = as.factor(ifelse(worry_mental == "Yes", "Yes", "No")), -->
+<!--                 mental_accessed = as.factor(ifelse(mental_accessed == "Yes", "Yes", "No")), -->
+<!--                 condition_mental = as.factor(ifelse(condition_mental == "Yes", "Yes", "No")), -->
+<!--                 skipschool_mentalhealth = as.factor(ifelse(skipschool_mentalhealth == "Yes", "Yes", "No")) -->
+<!--          ) %>%  -->
+<!--   filter(drug_yes_no == "yes", -->
+<!--          schyear != "Not at school/other") -->
+<!-- model_condition <- glm(data = model_data, condition_mental ~   schyear + sex + imd_quintile, family = binomial) -->
+<!-- model_condition <- glm(data = model_data, condition_mental ~   schyear , family = binomial) -->
+<!-- model_condition <- glm(data = model_data, condition_mental ~   sex , family = binomial) -->
+<!-- model_condition <- glm(data = model_data, condition_mental ~   imd_quintile , family = binomial) -->
+<!-- summary(model_condition) -->
+<!-- df <- as.data.frame(exp(coef(model_condition))) %>% -->
+<!--   rename(Coefficient =  "exp(coef(model_condition))") %>% -->
+<!--   mutate(Group = rownames(.)) %>% -->
+<!--   left_join(mutate(as.data.frame(exp(confint(model_condition))), Group = row.names(.))) %>% -->
+<!--   mutate(Group = gsub("Group", "", Group)) %>% -->
+<!--   filter(Group != "(Intercept)") %>% -->
+<!--   rename(LCL = "2.5 %", UCL = "97.5 %") %>%  -->
+<!--   filter(Group != "schyearYear 7") -->
+<!-- ggplot(df, aes(x = Coefficient, y = Group)) + -->
+<!--     geom_vline(aes(xintercept = 1), size = .25, linetype = "dashed") + -->
+<!--     geom_errorbarh(aes(xmax = UCL, xmin = LCL), size = .5, height = -->
+<!--                      .2, color = "gray50") + -->
+<!--     geom_point(size = 3.5, color = "#2c3e50") + -->
+<!--     theme_bw()+ -->
+<!--     theme(panel.grid.minor = element_blank()) + -->
+<!--     ylab("District") + -->
+<!--     xlab("Odds ratio") + -->
+<!--   labs(title = "Accessing services having taken drugs ", -->
+<!--        subtitle = "Baseline group: Females") -->
+<!-- ``` -->
 
 
 </section>
