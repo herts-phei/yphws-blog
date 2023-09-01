@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -58,7 +58,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -94,25 +95,27 @@ ga('send', {
     <span class="navbar-title">YPHWS Spotlight Analysis</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Blogposts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.hertshealthevidence.org/yphws/yphws.aspx">
+    <a class="nav-link" href="https://www.hertshealthevidence.org/yphws/yphws.aspx" rel="" target="">
  <span class="menu-text">YPHWS Homepage</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -180,9 +183,6 @@ ga('send', {
 
 
 
-<div class="cell">
-
-</div>
 <section id="abstract" class="level4">
 <h4 class="anchored" data-anchor-id="abstract">Abstract</h4>
 <p>Young LGBTQ+ students face different lived experiences than straight/heterosexual students. This could influence their decision-making around aspirations after leaving school, such as their career, education, or training. This brief analysis seeks to ascertain whether a student’s sexual orientation has a relationship with their aspirations after school.</p>
@@ -283,19 +283,6 @@ More on chi-squared tests
 <p>After the critical chi-squared test value is calculated, we then use the degrees of freedom to match the results on a distribution table with a significance threshold to determine statistical significance, usually set at 0.05. More about chi-squared tests can be found at: <a href="https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/8-chi-squared-tests">BMJ - The Chi squared tests</a></p>
 <p>Students answering <em>prefer not to say</em> were omitted from the test.</p>
 </details>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using an external vector in selections was deprecated in tidyselect 1.1.0.
-ℹ Please use `all_of()` or `any_of()` instead.
-  # Was:
-  data %&gt;% select(column)
-
-  # Now:
-  data %&gt;% select(all_of(column))
-
-See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</code></pre>
-</div>
-</div>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
@@ -410,16 +397,11 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-ℹ Please use tidy evaluation idioms with `aes()`.
-ℹ See also `vignette("ggplot2-in-packages")` for more information.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-stack-bar-graph-job" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-job-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing a job after school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing a job after school</figcaption>
 </figure>
 </div>
 </div>
@@ -508,7 +490,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 <div id="fig-stack-bar-graph-training" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-training-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing training after school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on pursuing training after school</figcaption>
 </figure>
 </div>
 </div>
@@ -597,7 +579,7 @@ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.</co
 <div id="fig-stack-bar-graph-unsure" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-unsure-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on uncertainty on what they want to do after leaving school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Normalised bar graph showing proportion of answers for LGBQ+ and non-LGBQ+ students on uncertainty on what they want to do after leaving school</figcaption>
 </figure>
 </div>
 </div>
@@ -711,9 +693,6 @@ More on the results
 </table>
 </div>
 <p>Given relatively small numbers of the non-binary and transgender student population, these two categories were pooled together. Female and male are grouped into <em>sex assigned at birth</em>. Students who answered <em>other</em> and <em>prefer not to say</em> were excluded.</p>
-<div class="cell">
-
-</div>
 <div id="tbl-panel-4" class="tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p>Table&nbsp;7: Statistical Significance of Aspirational Pathways After School for Care-experienced Status in Students</p>
@@ -873,15 +852,11 @@ More on the results
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 rows containing missing values (`position_stack()`).
-Removed 1 rows containing missing values (`position_stack()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-stack-bar-graph-trans-education" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-trans-education-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue to further education after leaving school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue to further education after leaving school</figcaption>
 </figure>
 </div>
 </div>
@@ -1018,7 +993,7 @@ Removed 1 rows containing missing values (`position_stack()`).</code></pre>
 <div id="fig-stack-bar-graph-trans-job" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-trans-job-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue a job after leaving school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;5: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue a job after leaving school</figcaption>
 </figure>
 </div>
 </div>
@@ -1155,7 +1130,7 @@ Removed 1 rows containing missing values (`position_stack()`).</code></pre>
 <div id="fig-stack-bar-graph-trans-training" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-trans-training-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue further training after leaving school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;6: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students on plans to pursue further training after leaving school</figcaption>
 </figure>
 </div>
 </div>
@@ -1292,7 +1267,7 @@ Removed 1 rows containing missing values (`position_stack()`).</code></pre>
 <div id="fig-stack-bar-graph-trans-unsure" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="index_files/figure-html/fig-stack-bar-graph-trans-unsure-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students around uncertainty on what to do after leaving school</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;7: Normalised bar graph showing proportion of answers for non-binary/transgender and sex assigned at birth students around uncertainty on what to do after leaving school</figcaption>
 </figure>
 </div>
 </div>
@@ -1332,9 +1307,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1399,6 +1388,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1442,7 +1517,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
