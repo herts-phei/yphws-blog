@@ -1,1 +1,121 @@
 /* css styles */
+
+```{css, echo=FALSE}
+
+.quarto-title-banner.page-columns.page-full {
+  align-items: center;
+}
+
+#rightlogo {
+  grid-column-start: 9;
+  grid-column-end: 12;
+  max-width: 100%;
+  max-height: 100%; /* this is set based on the height of a title and subtitle */
+}
+
+#leftlogo {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  max-width: 100%;
+  height: inherit; /* this is set based on the height of a title and subtitle */
+}
+
+.navbar {
+  background-color: #0B5258 !important;
+  color: #ffffff !important;
+}
+
+.navbar a {
+  color: #ffffff !important;
+}
+
+.quarto-title-banner {
+  padding-top: 0;
+  padding-bottom: 1em;
+}
+
+.quarto-title-block .quarto-title-banner .title,
+.quarto-title-block .quarto-title-banner .subtitle,
+.quarto-title-block .quarto-title-banner .author,
+.quarto-title-block .quarto-title-banner .date {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.quarto-title h1.title {
+    font-size: 2.5em !important; /* Adjust project title size as needed */
+}
+
+.subtitle.lead {
+  font-size: 2em; /* Adjust the subtitle size as needed */
+}
+
+
+.panel-caption, .figure-caption, figcaption {
+    color:#000000;
+}
+
+.callout.callout-style-simple>div.callout-header {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+    color: #000000;
+}
+
+/* for now disable darkmode but can revisit later */
+.quarto-color-scheme-toggle {
+    display: none;
+}
+
+.quarto-color-scheme-toggle i {
+    font-size: 0.5em; /* Adjust as needed */
+    line-height: 1.5em; 
+}
+
+.quarto-color-scheme-toggle::before {
+    content: "Dark Mode";
+    margin-right: 0.2em;
+}
+
+/* Almost anything on the page that can't be done in quarto can be adjusted via css. 
+Here are some examples. You can use the web page inspector from dev tools in any browser
+to find the class you want to adjust */
+#TOC .nav-link {
+  font-size: 1.2em; /* Adjust for table of contents font size */
+  line-height: 1.75em;  /* Adjust for table of contents line spacing font size*/
+}
+
+.nav-tabs .nav-link {
+    font-size: 16px; /* Adjust as needed for tab size */
+    padding: 12px 12px; /* Adjust as needed */
+    font-weight: bold
+}
+
+/* Adjust the size of headings */
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+.tab-header {
+  font-size: 1.3em;
+}
+
+#quarto-document-content > ul {
+  text-align: left;
+}
+```
